@@ -41,7 +41,7 @@ export default function OG() {
         }}
       />
 
-      {/* Wordmark row */}
+      {/* Wordmark — text first, then ring + dot mark */}
       <div
         style={{
           display: "flex",
@@ -50,22 +50,46 @@ export default function OG() {
           position: "relative",
         }}
       >
-        <svg
-          width="40"
-          height="40"
-          viewBox="0 0 100 100"
-          fill="none"
-          strokeLinecap="round"
-        >
-          <circle cx="50" cy="50" r="44" stroke="#ffffff" strokeWidth="6" />
-          <path
-            d="M 28 32 C 78 32, 22 68, 72 68"
-            stroke="#3b7dff"
-            strokeWidth="5"
-          />
-        </svg>
         <div style={{ fontSize: 26, fontWeight: 600, color: "#f4f4f5" }}>
           Conscience OS
+        </div>
+        <div
+          style={{
+            position: "relative",
+            width: 32,
+            height: 32,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              borderRadius: 9999,
+              background:
+                "radial-gradient(circle, rgba(59,125,255,0.5) 0%, transparent 65%)",
+            }}
+          />
+          <div
+            style={{
+              position: "relative",
+              width: 22,
+              height: 22,
+              borderRadius: 9999,
+              border: "2px solid #3b7dff",
+            }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              width: 7,
+              height: 7,
+              borderRadius: 9999,
+              background: "#3b7dff",
+            }}
+          />
         </div>
       </div>
 

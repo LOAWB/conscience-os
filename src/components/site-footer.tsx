@@ -12,8 +12,8 @@ export function SiteFooter() {
               href="/"
               className="flex items-center gap-2.5 font-semibold tracking-tight"
             >
-              <ConscienceMark size={26} withGlow />
               <span className="text-[0.95rem]">Conscience OS</span>
+              <ConscienceMark size={22} />
             </Link>
             <p className="mt-3 text-sm text-muted-foreground max-w-[16rem] leading-relaxed">
               Custom software that makes your business run better.

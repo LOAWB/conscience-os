@@ -13,22 +13,39 @@ export default function Icon() {
         alignItems: "center",
         justifyContent: "center",
         background: "#06080d",
+        position: "relative",
       }}
     >
-      <svg
-        width="56"
-        height="56"
-        viewBox="0 0 100 100"
-        fill="none"
-        strokeLinecap="round"
-      >
-        <circle cx="50" cy="50" r="44" stroke="#ffffff" strokeWidth="6" />
-        <path
-          d="M 28 32 C 78 32, 22 68, 72 68"
-          stroke="#3b7dff"
-          strokeWidth="5"
-        />
-      </svg>
+      {/* Soft halo */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 8,
+          borderRadius: 9999,
+          background:
+            "radial-gradient(circle, rgba(59,125,255,0.45) 0%, transparent 65%)",
+        }}
+      />
+      {/* Outer ring */}
+      <div
+        style={{
+          position: "relative",
+          width: 36,
+          height: 36,
+          borderRadius: 9999,
+          border: "3px solid #3b7dff",
+        }}
+      />
+      {/* Center dot */}
+      <div
+        style={{
+          position: "absolute",
+          width: 10,
+          height: 10,
+          borderRadius: 9999,
+          background: "#3b7dff",
+        }}
+      />
     </div>,
     { ...size },
   );

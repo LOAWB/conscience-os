@@ -33,9 +33,8 @@ export function SiteNav() {
           className="flex items-center gap-2.5 font-semibold tracking-tight text-foreground"
           onClick={() => setMobileOpen(false)}
         >
-          <ConscienceMark size={26} withGlow />
-
           <span className="text-[0.95rem]">Conscience OS</span>
+          <ConscienceMark size={22} />
         </Link>
 
         <nav className="hidden md:flex items-center gap-7">

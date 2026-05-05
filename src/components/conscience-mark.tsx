@@ -1,66 +1,56 @@
 import { cn } from "@/lib/utils";
 
-type Variant = "default" | "mono" | "soft";
-
 /**
- * Conscience OS symbol — circle (O) + flowing S curve inside.
- *
- * Geometric, no spiritual cues. Outer ring carries the brand stroke;
- * inner S is the accent mark.
+ * Conscience OS mark — simple ring + center dot with a pulsing blue halo.
+ * Geometric. Tech. Calm. Alive.
  */
 export function ConscienceMark({
-  size = 28,
+  size = 26,
   className,
-  variant = "default",
-  withGlow = false,
+  animated = true,
 }: {
   size?: number;
   className?: string;
-  variant?: Variant;
-  withGlow?: boolean;
+  animated?: boolean;
 }) {
-  const ringColor =
-    variant === "mono"
-      ? "currentColor"
-      : variant === "soft"
-        ? "rgba(255,255,255,0.85)"
-        : "currentColor";
-
-  const sCurveColor = variant === "mono" ? "currentColor" : "#3b7dff";
-
   return (
     <span
-      className={cn("relative inline-block", className)}
+      className={cn(
+        "relative inline-flex items-center justify-center shrink-0",
+        className,
+      )}
       style={{ width: size, height: size }}
       aria-hidden
     >
-      {withGlow && (
-        <span
-          className="absolute inset-0 rounded-full"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(59,125,255,0.45) 0%, transparent 70%)",
-          }}
-        />
-      )}
-      <svg
-        viewBox="0 0 100 100"
-        width={size}
-        height={size}
-        className="relative"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        {/* O — outer ring */}
-        <circle cx="50" cy="50" r="44" stroke={ringColor} strokeWidth="6" />
-        {/* S — flowing curve, single cubic bezier */}
-        <path
-          d="M 28 32 C 78 32, 22 68, 72 68"
-          stroke={sCurveColor}
-          strokeWidth="5"
-        />
-      </svg>
+      {/* Pulsing blue halo — the alive part */}
+      <span
+        className={cn(
+          "absolute inset-0 rounded-full",
+          animated && "pulse-soft",
+        )}
+        style={{
+          background:
+            "radial-gradient(circle, rgba(59,125,255,0.50) 0%, rgba(59,125,255,0.15) 35%, transparent 70%)",
+        }}
+      />
+      {/* Outer ring */}
+      <span
+        className="relative inline-block rounded-full"
+        style={{
+          width: size * 0.72,
+          height: size * 0.72,
+          border: "1.5px solid #3b7dff",
+        }}
+      />
+      {/* Center dot */}
+      <span
+        className="absolute rounded-full"
+        style={{
+          width: size * 0.22,
+          height: size * 0.22,
+          background: "#3b7dff",
+        }}
+      />
     </span>
   );
 }
