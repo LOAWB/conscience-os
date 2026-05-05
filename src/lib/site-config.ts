@@ -64,7 +64,7 @@ export const services: Service[] = [
     solves:
       "Repetitive work eating staff time. AI-shaped tasks like summarization, classification, and extraction handled by humans because no one wired the API.",
     builds:
-      "Targeted automations on Anthropic Claude, OpenAI, or open-source models. Workflows that route, draft, classify, and surface only the decisions humans should make.",
+      "Targeted automations matched to the right model and the right job. Workflows that route, draft, classify, and surface only the decisions humans should make.",
     outcomes:
       "Hours back per week. Faster turnaround on customer-facing work. Lower error rate on repetitive tasks.",
   },
