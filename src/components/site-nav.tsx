@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { siteConfig } from "@/lib/site-config";
 import { ButtonLink } from "@/components/ui/button";
-import { ConscienceMark } from "@/components/conscience-mark";
+import { ConscienceWordmark } from "@/components/conscience-mark";
 import { cn } from "@/lib/utils";
 
 export function SiteNav() {
@@ -30,11 +30,10 @@ export function SiteNav() {
       <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-10 h-16 flex items-center justify-between">
         <Link
           href="/"
-          className="flex items-center gap-2.5 font-semibold tracking-tight text-foreground"
+          className="flex items-center text-foreground"
           onClick={() => setMobileOpen(false)}
         >
-          <span className="text-[0.95rem]">Conscience OS</span>
-          <ConscienceMark size={22} />
+          <ConscienceWordmark markSize={20} />
         </Link>
 
         <nav className="hidden md:flex items-center gap-7">

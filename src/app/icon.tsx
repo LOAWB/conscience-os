@@ -16,34 +16,25 @@ export default function Icon() {
         position: "relative",
       }}
     >
-      {/* Soft halo */}
+      {/* Halo */}
       <div
         style={{
           position: "absolute",
-          inset: 8,
+          inset: 4,
           borderRadius: 9999,
           background:
-            "radial-gradient(circle, rgba(59,125,255,0.45) 0%, transparent 65%)",
+            "radial-gradient(circle, rgba(59,125,255,0.55) 0%, rgba(59,125,255,0.18) 35%, transparent 72%)",
         }}
       />
-      {/* Outer ring */}
+      {/* Ring */}
       <div
         style={{
           position: "relative",
-          width: 36,
-          height: 36,
+          width: 38,
+          height: 38,
           borderRadius: 9999,
           border: "3px solid #3b7dff",
-        }}
-      />
-      {/* Center dot */}
-      <div
-        style={{
-          position: "absolute",
-          width: 10,
-          height: 10,
-          borderRadius: 9999,
-          background: "#3b7dff",
+          boxShadow: "0 0 12px rgba(59,125,255,0.5)",
         }}
       />
     </div>,

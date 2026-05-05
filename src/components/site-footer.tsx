@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
-import { ConscienceMark } from "@/components/conscience-mark";
+import { ConscienceWordmark } from "@/components/conscience-mark";
 
 export function SiteFooter() {
   return (
@@ -8,12 +8,8 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-10 py-14">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
           <div className="col-span-2 md:col-span-1">
-            <Link
-              href="/"
-              className="flex items-center gap-2.5 font-semibold tracking-tight"
-            >
-              <span className="text-[0.95rem]">Conscience OS</span>
-              <ConscienceMark size={22} />
+            <Link href="/" className="inline-flex items-center">
+              <ConscienceWordmark markSize={20} />
             </Link>
             <p className="mt-3 text-sm text-muted-foreground max-w-[16rem] leading-relaxed">
               Custom software that makes your business run better.

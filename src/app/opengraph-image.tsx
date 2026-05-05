@@ -41,17 +41,29 @@ export default function OG() {
         }}
       />
 
-      {/* Wordmark — text first, then ring + dot mark */}
+      {/* Styled wordmark — uppercase tracked, accent on OS, ring on the right */}
       <div
         style={{
           display: "flex",
           alignItems: "center",
-          gap: 14,
+          gap: 16,
           position: "relative",
         }}
       >
-        <div style={{ fontSize: 26, fontWeight: 600, color: "#f4f4f5" }}>
-          Conscience OS
+        <div
+          style={{
+            fontSize: 22,
+            fontWeight: 600,
+            letterSpacing: "0.18em",
+            textTransform: "uppercase",
+            color: "#f4f4f5",
+            display: "flex",
+            alignItems: "center",
+            gap: 12,
+          }}
+        >
+          <span>Conscience</span>
+          <span style={{ color: "#3b7dff" }}>OS</span>
         </div>
         <div
           style={{
@@ -69,25 +81,16 @@ export default function OG() {
               inset: 0,
               borderRadius: 9999,
               background:
-                "radial-gradient(circle, rgba(59,125,255,0.5) 0%, transparent 65%)",
+                "radial-gradient(circle, rgba(59,125,255,0.55) 0%, transparent 70%)",
             }}
           />
           <div
             style={{
               position: "relative",
-              width: 22,
-              height: 22,
+              width: 24,
+              height: 24,
               borderRadius: 9999,
-              border: "2px solid #3b7dff",
-            }}
-          />
-          <div
-            style={{
-              position: "absolute",
-              width: 7,
-              height: 7,
-              borderRadius: 9999,
-              background: "#3b7dff",
+              border: "2.5px solid #3b7dff",
             }}
           />
         </div>
