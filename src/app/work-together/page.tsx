@@ -104,21 +104,20 @@ export default function WorkTogetherPage() {
             ))}
           </div>
 
-          {/* Subtle support band — lifecycle, not a standalone product */}
+          {/* Ongoing partnership band — system evolves with the business */}
           <div className="mt-10 rounded-xl border border-border bg-muted/40 p-7 sm:p-8">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
                 <p className="text-[0.7rem] font-mono uppercase tracking-[0.16em] text-subtle mb-2">
-                  Lifecycle
+                  Ongoing
                 </p>
                 <p className="text-[1rem] text-foreground leading-relaxed">
-                  Post-build support is available as part of your system
-                  deployment, where ongoing care is needed.
+                  An ongoing partnership built into every engagement. New
+                  features and workflows added as your business grows — the
+                  system evolves with you, there when you need it.
                 </p>
               </div>
-              <div className="text-xs text-subtle font-mono">
-                Scoped per engagement
-              </div>
+              <div className="text-xs text-subtle font-mono">Built in</div>
             </div>
           </div>
         </Container>
