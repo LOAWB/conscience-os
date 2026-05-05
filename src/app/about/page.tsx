@@ -42,22 +42,26 @@ export default function AboutPage() {
             </div>
             <div className="space-y-5 text-[1.05rem] text-foreground leading-relaxed">
               <p>
-                Conscience OS started in operations, not in a tech accelerator.
-                The first system we ever built ran a car wash — three
-                off-the-shelf tools that didn't talk to each other, replaced by
-                one Postgres-backed dashboard that the owner actually used.
+                Conscience Os came out of running a business, not building
+                software for one. I was working in a car wash that was held
+                together with six different apps — one for scheduling, one for
+                payments, one for tracking the crew, none of them talking to
+                each other. Closing shift was two hours of typing the same
+                numbers into three different screens.
               </p>
               <p>
-                That changed everything. Throughput climbed. Reconciliation went
-                from a closing-shift ritual to a 10-minute glance. The crew got
-                out earlier. The numbers told the truth.
+                So I built one tool that did all of it. One dashboard. Real
+                numbers. Something I could actually look at and understand.
+                After that, the work just felt different. The crew got out
+                earlier. I stopped guessing about what was happening on the lot.
+                Decisions got made on what was actually true.
               </p>
               <p>
-                Now we build systems like that for other operators. Real
-                businesses with real friction, where every hour the staff loses
-                to bad software is an hour the owner is paying for. We start
-                with an audit, identify what's leaking, build what fixes it, and
-                measure the result.
+                That's where this came from, and it's still how I work. I come
+                in, I look at how your business actually runs, and I build the
+                system that fits — not the other way around. If something's
+                leaking time or money, I want to know about it. Then we fix it
+                together.
               </p>
               <p className="text-subtle font-mono text-sm pt-2 border-t border-border mt-7">
                 [Vessel: drop in 200-400 word operator-voice founder bio when
