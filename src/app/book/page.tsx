@@ -46,7 +46,7 @@ export default function BookPage() {
                 body: "Audit findings are yours. Build with anyone.",
               },
             ].map((s) => (
-              <div key={s.title} className="p-5 rounded-xl bg-muted">
+              <div key={s.title} className="p-5 rounded-xl glass-card">
                 <p className="font-semibold tracking-tight text-foreground text-[1rem]">
                   {s.title}
                 </p>

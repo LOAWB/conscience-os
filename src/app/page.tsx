@@ -3,39 +3,46 @@ import { ArrowRight } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/section";
+import { HeroRing } from "@/components/hero-ring";
 import { siteConfig } from "@/lib/site-config";
 
 export default function Home() {
   return (
     <>
-      {/* 1. HERO — immediate clarity + action, soft blue aura */}
+      {/* 1. HERO — dark cinematic, headline left + ring system right */}
       <section className="relative overflow-hidden aura-hero">
-        <div aria-hidden className="absolute inset-0 grid-pattern opacity-40" />
+        <div aria-hidden className="absolute inset-0 grid-pattern opacity-50" />
         <div
           aria-hidden
-          className="absolute inset-x-0 top-0 h-[60vh] bg-gradient-to-b from-background via-background/95 to-transparent"
+          className="absolute inset-x-0 top-0 h-[80vh] bg-gradient-to-b from-background/0 via-background/0 to-background"
         />
         <div className="relative">
-          <Container>
-            <div className="pt-20 pb-20 sm:pt-28 sm:pb-24 lg:pt-36 lg:pb-28 max-w-3xl fade-in-up">
-              <h1 className="font-semibold tracking-[-0.02em] text-foreground leading-[1.05] text-[length:var(--text-display-xl)]">
-                {siteConfig.headline}
-              </h1>
-              <p className="mt-7 text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl">
-                {siteConfig.subhead}
-              </p>
-              <div className="mt-10 flex items-center gap-6">
-                <ButtonLink href={siteConfig.ctaPrimary.href} size="lg">
-                  {siteConfig.ctaPrimary.label}
-                  <ArrowRight className="size-4" />
-                </ButtonLink>
-                <Link
-                  href="#how-it-works"
-                  className="text-[0.95rem] text-muted-foreground hover:text-foreground transition-colors duration-150 inline-flex items-center gap-1.5"
-                >
-                  See how it works
-                  <ArrowRight className="size-3.5" />
-                </Link>
+          <Container size="wide">
+            <div className="pt-20 pb-20 sm:pt-28 sm:pb-24 lg:pt-36 lg:pb-32 grid lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-16 items-center">
+              <div className="fade-in-up max-w-2xl">
+                <h1 className="font-semibold tracking-[-0.02em] text-foreground leading-[1.05] text-[length:var(--text-display-xl)]">
+                  {siteConfig.headline}
+                </h1>
+                <p className="mt-7 text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl">
+                  {siteConfig.subhead}
+                </p>
+                <div className="mt-10 flex items-center gap-6">
+                  <ButtonLink href={siteConfig.ctaPrimary.href} size="lg">
+                    {siteConfig.ctaPrimary.label}
+                    <ArrowRight className="size-4" />
+                  </ButtonLink>
+                  <Link
+                    href="#how-it-works"
+                    className="text-[0.95rem] text-muted-foreground hover:text-foreground transition-colors duration-150 inline-flex items-center gap-1.5"
+                  >
+                    See how it works
+                    <ArrowRight className="size-3.5" />
+                  </Link>
+                </div>
+              </div>
+
+              <div className="hidden lg:block fade-in-up">
+                <HeroRing />
               </div>
             </div>
           </Container>
@@ -232,7 +239,7 @@ export default function Home() {
             ].map((s) => (
               <div
                 key={s.step}
-                className="rounded-xl bg-white border border-border p-7 shadow-soft"
+                className="rounded-xl glass-card glass-card-hover p-7 transition-colors duration-200"
               >
                 <p className="font-mono text-xs text-accent">{s.step}</p>
                 <h3 className="mt-5 font-semibold text-lg tracking-tight">
@@ -271,7 +278,7 @@ export default function Home() {
       {/* 8. OFFER — make the next step tangible */}
       <Section variant="muted">
         <Container size="narrow">
-          <div className="rounded-2xl bg-white border border-border p-8 sm:p-10 aura-card">
+          <div className="rounded-2xl aura-card-ink p-8 sm:p-10">
             <p className="text-xs font-semibold uppercase tracking-wider text-accent mb-4">
               Start here
             </p>

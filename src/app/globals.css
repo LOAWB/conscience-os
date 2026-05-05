@@ -1,22 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #ffffff;
-  --color-foreground: #0b0f14;
-  --color-muted: #f8fafc;
-  --color-muted-foreground: #64748b;
-  --color-subtle: #94a3b8;
-  --color-border: #e5e7eb;
-  --color-border-strong: #cbd5e1;
+  /* Dark premium tech — black base with electric blue accent */
+  --color-background: #06080d;
+  --color-foreground: #f4f4f5;
+  --color-muted: #0c0f17;
+  --color-muted-foreground: #94a3b8;
+  --color-subtle: #6b7790;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.18);
   --color-accent: #3b7dff;
-  --color-accent-hover: #2563eb;
+  --color-accent-hover: #5b8eff;
   --color-accent-foreground: #ffffff;
-  --color-accent-soft: #eef4ff;
-  --color-ink: #0e162b;
-  --color-ink-soft: #1a2440;
-  --color-success: #10b981;
-  --color-warn: #f59e0b;
-  --color-error: #ef4444;
+  --color-accent-soft: rgba(59, 125, 255, 0.12);
+  --color-ink: #03050a;
+  --color-ink-soft: #0a0d14;
+  --color-success: #34d399;
+  --color-warn: #fbbf24;
+  --color-error: #f87171;
 
   --font-sans:
     var(--font-geist-sans), system-ui, -apple-system, "Segoe UI",
@@ -36,13 +37,11 @@
   --radius-xl: 20px;
 
   --shadow-soft:
-    0 1px 2px rgba(14, 22, 43, 0.04), 0 4px 16px -6px rgba(59, 125, 255, 0.07);
+    0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 16px -6px rgba(59, 125, 255, 0.1);
   --shadow-md:
-    0 4px 6px -1px rgba(14, 22, 43, 0.06),
-    0 10px 24px -6px rgba(59, 125, 255, 0.1);
+    0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 10px 24px -6px rgba(59, 125, 255, 0.14);
   --shadow-lg:
-    0 25px 50px -12px rgba(14, 22, 43, 0.12),
-    0 0 32px -8px rgba(59, 125, 255, 0.18);
+    0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 32px -8px rgba(59, 125, 255, 0.22);
 }
 
 @layer base {
@@ -54,6 +53,7 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: var(--color-background);
   }
   body {
     background-color: var(--color-background);
@@ -77,20 +77,39 @@
     transform: translateY(0);
   }
 }
+@keyframes orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes pulse-ring {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
 
 .fade-in-up {
   animation: fade-in-up 0.7s cubic-bezier(0.21, 0.61, 0.35, 1) forwards;
 }
 
+/* Subtle grid background — white-tone on dark */
 .grid-pattern {
   background-image:
-    linear-gradient(to right, rgba(14, 22, 43, 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(14, 22, 43, 0.045) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   background-size: 56px 56px;
 }
 
-/* Blue-aura system — controlled, low-opacity, never neon */
-
+/* Hero aura — softer on dark, blue radial behind headline area */
 .aura-hero {
   position: relative;
   isolation: isolate;
@@ -100,14 +119,15 @@
   position: absolute;
   inset: 0;
   background-image: radial-gradient(
-    ellipse 70% 45% at 50% 25%,
-    rgba(59, 125, 255, 0.1),
+    ellipse 65% 50% at 30% 35%,
+    rgba(59, 125, 255, 0.16),
     transparent 65%
   );
   pointer-events: none;
   z-index: -1;
 }
 
+/* Ink section — already dark; aura adds the welcome glow */
 .aura-ink {
   position: relative;
   isolation: isolate;
@@ -132,32 +152,73 @@
   z-index: -1;
 }
 
-.aura-card {
-  box-shadow:
-    0 1px 2px rgba(14, 22, 43, 0.04),
-    0 0 0 1px rgba(59, 125, 255, 0.05),
-    0 8px 28px -10px rgba(59, 125, 255, 0.14);
+/* Glass cards — premium translucent surface with subtle white-alpha edge */
+.glass-card {
+  background-color: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+}
+.glass-card-hover:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+  border-color: rgba(59, 125, 255, 0.3);
 }
 
-.aura-card-ink {
+/* Aura cards — slightly lifted surface with blue edge glow */
+.aura-card {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 0 0 1px rgba(59, 125, 255, 0.18),
-    0 0 32px -10px rgba(59, 125, 255, 0.3);
+    0 8px 28px -10px rgba(59, 125, 255, 0.18);
 }
 
+/* Highlighted ink-card — for the focus card on engagement, etc. */
+.aura-card-ink {
+  background-color: var(--color-ink);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 0 1px rgba(59, 125, 255, 0.3),
+    0 0 40px -8px rgba(59, 125, 255, 0.4);
+}
+
+/* Primary button glow */
 .btn-glow {
   box-shadow:
-    0 1px 2px rgba(14, 22, 43, 0.1),
-    0 0 0 1px rgba(59, 125, 255, 0.2),
-    0 6px 20px -4px rgba(59, 125, 255, 0.4);
+    0 1px 2px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(59, 125, 255, 0.3),
+    0 6px 20px -4px rgba(59, 125, 255, 0.5);
   transition:
     box-shadow 200ms cubic-bezier(0.21, 0.61, 0.35, 1),
     background-color 150ms;
 }
 .btn-glow:hover {
   box-shadow:
-    0 1px 2px rgba(14, 22, 43, 0.1),
-    0 0 0 1px rgba(59, 125, 255, 0.32),
-    0 10px 28px -6px rgba(59, 125, 255, 0.55);
+    0 1px 2px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(59, 125, 255, 0.45),
+    0 10px 28px -6px rgba(59, 125, 255, 0.65);
+}
+
+/* Blue accent line — for section dividers / subtle hairlines */
+.accent-line {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(59, 125, 255, 0.3) 50%,
+    transparent 100%
+  );
+}
+
+/* Orbit / ring motif animations */
+.orbit-slow {
+  animation: orbit-spin 60s linear infinite;
+  transform-origin: center;
+}
+.orbit-medium {
+  animation: orbit-spin 30s linear infinite;
+  transform-origin: center;
+}
+.pulse-soft {
+  animation: pulse-ring 3.5s ease-in-out infinite;
+  transform-origin: center;
 }

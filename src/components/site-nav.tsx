@@ -22,7 +22,7 @@ export function SiteNav() {
       className={cn(
         "sticky top-0 z-40 w-full transition-all duration-200",
         scrolled
-          ? "bg-white/85 backdrop-blur-md border-b border-border"
+          ? "bg-background/75 backdrop-blur-xl border-b border-border"
           : "bg-transparent border-b border-transparent",
       )}
     >
@@ -34,11 +34,23 @@ export function SiteNav() {
         >
           <span
             aria-hidden
-            className="inline-block size-6 rounded-md bg-ink relative overflow-hidden"
+            className="relative inline-flex items-center justify-center size-7"
           >
-            <span className="absolute inset-0 bg-gradient-to-br from-accent to-ink" />
-            <span className="absolute inset-[3px] rounded-[3px] bg-white/95" />
-            <span className="absolute inset-[6px] rounded-full bg-accent" />
+            <span
+              className="absolute inset-0 rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(59,125,255,0.4) 0%, transparent 70%)",
+              }}
+            />
+            <span
+              className="relative inline-block size-5 rounded-full border-[1.5px]"
+              style={{ borderColor: "#3b7dff" }}
+            />
+            <span
+              className="absolute size-1.5 rounded-full"
+              style={{ background: "#3b7dff" }}
+            />
           </span>
           <span className="text-[0.95rem]">Conscience OS</span>
         </Link>
@@ -95,7 +107,7 @@ export function SiteNav() {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden border-t border-border bg-white">
+        <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-xl">
           <div className="px-6 py-4 flex flex-col gap-1">
             {siteConfig.nav.map((item) => (
               <Link

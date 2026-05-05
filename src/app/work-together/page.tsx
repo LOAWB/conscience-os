@@ -42,8 +42,8 @@ export default function WorkTogetherPage() {
                 className={cn(
                   "relative rounded-2xl p-7 sm:p-9 flex flex-col",
                   s.highlight
-                    ? "aura-ink text-white aura-card-ink"
-                    : "bg-white border border-border aura-card",
+                    ? "aura-card-ink"
+                    : "glass-card glass-card-hover transition-colors duration-200",
                 )}
               >
                 <p
@@ -105,7 +105,7 @@ export default function WorkTogetherPage() {
           </div>
 
           {/* Ongoing partnership band — system evolves with the business */}
-          <div className="mt-10 rounded-xl border border-border bg-muted/40 p-7 sm:p-8">
+          <div className="mt-10 rounded-xl glass-card p-7 sm:p-8">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
                 <p className="text-[0.7rem] font-mono uppercase tracking-[0.16em] text-subtle mb-2">

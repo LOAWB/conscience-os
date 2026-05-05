@@ -42,7 +42,7 @@ export function BookingForm() {
 
   if (status === "ok") {
     return (
-      <div className="rounded-xl border border-border bg-white p-8 text-center">
+      <div className="rounded-xl glass-card p-8 text-center">
         <div className="mx-auto inline-flex items-center justify-center size-12 rounded-full bg-success/10 text-success">
           <Check className="size-6" strokeWidth={2.25} />
         </div>
@@ -67,7 +67,7 @@ export function BookingForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="rounded-xl border border-border bg-white p-6 sm:p-8 space-y-5"
+      className="rounded-xl glass-card p-6 sm:p-8 space-y-5"
     >
       <div className="grid sm:grid-cols-2 gap-5">
         <div>
@@ -158,7 +158,7 @@ export function BookingForm() {
           name="tier"
           defaultValue="audit"
           className={cn(
-            "h-11 w-full rounded-md border border-border bg-white px-3.5 text-[0.95rem] text-foreground",
+            "h-11 w-full rounded-md border border-border bg-white/[0.03] px-3.5 text-[0.95rem] text-foreground",
             "focus-visible:outline-none focus-visible:border-accent focus-visible:ring-2 focus-visible:ring-accent/20 transition-colors",
           )}
         >

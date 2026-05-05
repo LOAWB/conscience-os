@@ -11,8 +11,8 @@ const base =
 const variantStyles: Record<Variant, string> = {
   primary: "bg-accent text-accent-foreground hover:bg-accent-hover btn-glow",
   secondary:
-    "bg-white text-ink border border-border-strong hover:bg-muted hover:border-accent/40",
-  ghost: "text-foreground hover:bg-muted",
+    "glass-card text-foreground hover:bg-white/[0.06] hover:border-accent/40 transition-colors",
+  ghost: "text-foreground hover:bg-white/[0.05]",
   ink: "bg-ink text-white hover:bg-ink-soft",
 };
 
