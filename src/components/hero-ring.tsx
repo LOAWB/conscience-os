@@ -9,21 +9,31 @@ export function HeroRing({ className }: { className?: string }) {
       )}
       aria-hidden
     >
-      {/* Layered radial glow halo */}
+      {/* Outer bloom — bleeds far beyond the ring */}
       <div
-        className="absolute inset-[8%] rounded-full"
+        className="absolute -inset-[10%] rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(59,125,255,0.55) 0%, rgba(59,125,255,0.20) 30%, rgba(59,125,255,0.06) 55%, transparent 75%)",
-          filter: "blur(20px)",
+            "radial-gradient(circle, rgba(59,125,255,0.45) 0%, rgba(59,125,255,0.18) 25%, rgba(59,125,255,0.06) 45%, transparent 70%)",
+          filter: "blur(40px)",
         }}
       />
+      {/* Mid bloom — concentrated halo */}
       <div
-        className="absolute inset-[20%] rounded-full"
+        className="absolute inset-[5%] rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(91,142,255,0.45) 0%, rgba(59,125,255,0.10) 50%, transparent 75%)",
-          filter: "blur(8px)",
+            "radial-gradient(circle, rgba(123,162,255,0.70) 0%, rgba(59,125,255,0.30) 30%, rgba(59,125,255,0.10) 55%, transparent 78%)",
+          filter: "blur(24px)",
+        }}
+      />
+      {/* Inner bloom — bright core glow */}
+      <div
+        className="absolute inset-[28%] rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(255,255,255,0.40) 0%, rgba(155,188,255,0.55) 18%, rgba(59,125,255,0.15) 50%, transparent 75%)",
+          filter: "blur(10px)",
         }}
       />
 
