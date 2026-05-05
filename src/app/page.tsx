@@ -8,8 +8,8 @@ import { siteConfig } from "@/lib/site-config";
 export default function Home() {
   return (
     <>
-      {/* 1. HERO — immediate clarity + action */}
-      <section className="relative overflow-hidden">
+      {/* 1. HERO — immediate clarity + action, soft blue aura */}
+      <section className="relative overflow-hidden aura-hero">
         <div aria-hidden className="absolute inset-0 grid-pattern opacity-40" />
         <div
           aria-hidden
@@ -271,7 +271,7 @@ export default function Home() {
       {/* 8. OFFER — make the next step tangible */}
       <Section variant="muted">
         <Container size="narrow">
-          <div className="rounded-2xl bg-white border border-border p-8 sm:p-10 shadow-soft">
+          <div className="rounded-2xl bg-white border border-border p-8 sm:p-10 aura-card">
             <p className="text-xs font-semibold uppercase tracking-wider text-accent mb-4">
               Start here
             </p>

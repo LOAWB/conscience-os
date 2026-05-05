@@ -14,7 +14,7 @@ export function Section({
   const variants = {
     default: "bg-background",
     muted: "bg-muted",
-    ink: "bg-ink text-white",
+    ink: "aura-ink text-white",
   };
   return (
     <section

@@ -42,8 +42,8 @@ export default function WorkTogetherPage() {
                 className={cn(
                   "relative rounded-2xl p-7 sm:p-9 flex flex-col",
                   s.highlight
-                    ? "bg-ink text-white border border-ink"
-                    : "bg-white border border-border",
+                    ? "aura-ink text-white aura-card-ink"
+                    : "bg-white border border-border aura-card",
                 )}
               >
                 <p
