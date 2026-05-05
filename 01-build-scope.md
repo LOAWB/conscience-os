@@ -383,6 +383,28 @@ These are non-negotiable. If a shadow finds a strong case for change, file a `LA
 - No "coming soon" sections — every section is finished or omitted
 - Operator-first identity (built by someone who actually runs a business)
 - Case study features Splash Bros (real before/after with real metrics)
+- **ZERO-SPEND DISCIPLINE for v1.0.** No paid services beyond the $10 domain (already paid). Every infrastructure choice in v1.0 must use free tier. Paid upgrades deferred to post-first-client revenue. The amendment is binding across all 55 work domains; if a domain's acceptance criteria can only be met by paying for a service, surface it as a `BLOCKER` and propose a free-tier alternative before committing spend.
+
+### Zero-spend stack lock (v1.0)
+- **Hosting:** Railway free tier (web + api + db services on starter resources)
+- **DNS + email inbound:** Cloudflare free tier (DNS + Email Routing forwarding)
+- **Email outbound:** Resend free tier (100 emails/day) — booking confirms, lead notifs
+- **Code hosting:** GitHub free tier (private repos in LOAWB org)
+- **Error tracking:** Sentry free tier (5K errors/mo)
+- **Booking scheduler:** Cal.com free tier OR self-hosted Cal.com on Railway
+- **Anti-bot:** Cloudflare Turnstile (free) on intake form
+- **Analytics:** Plausible self-hosted on Railway, or Umami self-hosted (free; not Google Analytics)
+- **Image hosting:** Railway-served via Next.js Image (free), no Cloudinary
+- **AI integration on intake:** DEFER until first real client submits — feature scaffold ships v1.0, API key wires up at first paying client
+- **No LLC, no Mercury, no insurance, no Mac Mini, no paid monitoring, no paid contract tools, no paid CRM, no paid project mgmt**
+
+### What triggers post-v1.0 paid upgrades
+- First audit client signs → fund LLC + EIN + Mercury + Stripe activation + Anthropic API key
+- 5th client → fund Mac Mini + UPS + paid monitoring (or build internal monitoring per phased plan)
+- 10th client → fund E&O insurance + bookkeeper or QuickBooks + contract management
+- 15th client → fund first hire (VA or junior dev)
+
+The discipline holds: every paid upgrade is a deductible business expense covered by client revenue, not a pre-revenue burn.
 
 ---
 
