@@ -112,9 +112,10 @@ export default function WorkTogetherPage() {
                   Ongoing
                 </p>
                 <p className="text-[1rem] text-foreground leading-relaxed">
-                  An ongoing partnership built into every engagement. New
-                  features and workflows added as your business grows — the
-                  system evolves with you, there when you need it.
+                  An ongoing partnership built into every engagement. As your
+                  operations run more efficiently and better ways become clear,
+                  we're there to build what's next — features added, workflows
+                  refined, the system growing with the business.
                 </p>
               </div>
               <div className="text-xs text-subtle font-mono">Built in</div>
