@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
+import { ConscienceMark } from "@/components/conscience-mark";
 
 export function SiteFooter() {
   return (
@@ -11,26 +12,7 @@ export function SiteFooter() {
               href="/"
               className="flex items-center gap-2.5 font-semibold tracking-tight"
             >
-              <span
-                aria-hidden
-                className="relative inline-flex items-center justify-center size-7"
-              >
-                <span
-                  className="absolute inset-0 rounded-full"
-                  style={{
-                    background:
-                      "radial-gradient(circle, rgba(59,125,255,0.35) 0%, transparent 70%)",
-                  }}
-                />
-                <span
-                  className="relative inline-block size-5 rounded-full border-[1.5px]"
-                  style={{ borderColor: "#3b7dff" }}
-                />
-                <span
-                  className="absolute size-1.5 rounded-full"
-                  style={{ background: "#3b7dff" }}
-                />
-              </span>
+              <ConscienceMark size={26} withGlow />
               <span className="text-[0.95rem]">Conscience OS</span>
             </Link>
             <p className="mt-3 text-sm text-muted-foreground max-w-[16rem] leading-relaxed">

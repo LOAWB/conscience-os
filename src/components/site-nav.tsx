@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { siteConfig } from "@/lib/site-config";
 import { ButtonLink } from "@/components/ui/button";
+import { ConscienceMark } from "@/components/conscience-mark";
 import { cn } from "@/lib/utils";
 
 export function SiteNav() {
@@ -32,26 +33,8 @@ export function SiteNav() {
           className="flex items-center gap-2.5 font-semibold tracking-tight text-foreground"
           onClick={() => setMobileOpen(false)}
         >
-          <span
-            aria-hidden
-            className="relative inline-flex items-center justify-center size-7"
-          >
-            <span
-              className="absolute inset-0 rounded-full"
-              style={{
-                background:
-                  "radial-gradient(circle, rgba(59,125,255,0.4) 0%, transparent 70%)",
-              }}
-            />
-            <span
-              className="relative inline-block size-5 rounded-full border-[1.5px]"
-              style={{ borderColor: "#3b7dff" }}
-            />
-            <span
-              className="absolute size-1.5 rounded-full"
-              style={{ background: "#3b7dff" }}
-            />
-          </span>
+          <ConscienceMark size={26} withGlow />
+
           <span className="text-[0.95rem]">Conscience OS</span>
         </Link>
 

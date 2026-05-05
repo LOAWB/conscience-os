@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const size = { width: 32, height: 32 };
+export const size = { width: 64, height: 64 };
 export const contentType = "image/png";
 
 export default function Icon() {
@@ -12,31 +12,23 @@ export default function Icon() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "linear-gradient(135deg, #3b7dff 0%, #0b0f14 100%)",
-        borderRadius: 6,
-        position: "relative",
+        background: "#06080d",
       }}
     >
-      <div
-        style={{
-          position: "absolute",
-          inset: 4,
-          background: "#ffffff",
-          borderRadius: 3,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
+      <svg
+        width="56"
+        height="56"
+        viewBox="0 0 100 100"
+        fill="none"
+        strokeLinecap="round"
       >
-        <div
-          style={{
-            width: 10,
-            height: 10,
-            borderRadius: 999,
-            background: "#3b7dff",
-          }}
+        <circle cx="50" cy="50" r="44" stroke="#ffffff" strokeWidth="6" />
+        <path
+          d="M 28 32 C 78 32, 22 68, 72 68"
+          stroke="#3b7dff"
+          strokeWidth="5"
         />
-      </div>
+      </svg>
     </div>,
     { ...size },
   );

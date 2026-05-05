@@ -13,20 +13,35 @@ export default function OG() {
         height: "100%",
         display: "flex",
         flexDirection: "column",
-        background: "#ffffff",
+        background: "#06080d",
         padding: "80px 96px",
         fontFamily: "system-ui, sans-serif",
         position: "relative",
       }}
     >
+      {/* Soft blue radial in the corner */}
       <div
         style={{
           position: "absolute",
           inset: 0,
           background:
-            "radial-gradient(ellipse at top right, rgba(59,125,255,0.08), transparent 60%)",
+            "radial-gradient(ellipse 60% 50% at 80% 20%, rgba(59,125,255,0.18), transparent 60%)",
         }}
       />
+
+      {/* Subtle grid */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          opacity: 0.4,
+          backgroundImage:
+            "linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px)",
+          backgroundSize: "56px 56px",
+        }}
+      />
+
+      {/* Wordmark row */}
       <div
         style={{
           display: "flex",
@@ -35,50 +50,33 @@ export default function OG() {
           position: "relative",
         }}
       >
-        <div
-          style={{
-            width: 36,
-            height: 36,
-            background: "linear-gradient(135deg, #3b7dff, #0b0f14)",
-            borderRadius: 8,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 100 100"
+          fill="none"
+          strokeLinecap="round"
         >
-          <div
-            style={{
-              width: 24,
-              height: 24,
-              background: "#ffffff",
-              borderRadius: 4,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <div
-              style={{
-                width: 10,
-                height: 10,
-                borderRadius: 999,
-                background: "#3b7dff",
-              }}
-            />
-          </div>
-        </div>
-        <div style={{ fontSize: 24, fontWeight: 600, color: "#0b0f14" }}>
+          <circle cx="50" cy="50" r="44" stroke="#ffffff" strokeWidth="6" />
+          <path
+            d="M 28 32 C 78 32, 22 68, 72 68"
+            stroke="#3b7dff"
+            strokeWidth="5"
+          />
+        </svg>
+        <div style={{ fontSize: 26, fontWeight: 600, color: "#f4f4f5" }}>
           Conscience OS
         </div>
       </div>
 
+      {/* Headline */}
       <div
         style={{
           marginTop: 80,
-          fontSize: 76,
+          fontSize: 72,
           fontWeight: 600,
           letterSpacing: "-0.02em",
-          color: "#0b0f14",
+          color: "#f4f4f5",
           lineHeight: 1.05,
           maxWidth: 920,
           position: "relative",
@@ -87,25 +85,20 @@ export default function OG() {
         {siteConfig.headline}
       </div>
 
+      {/* Footer row */}
       <div
         style={{
           marginTop: "auto",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          color: "#64748b",
+          color: "#94a3b8",
           fontSize: 22,
           position: "relative",
         }}
       >
         <div>conscienceos.com</div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 10,
-          }}
-        >
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <div
             style={{
               width: 8,
