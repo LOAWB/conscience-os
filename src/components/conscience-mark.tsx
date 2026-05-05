@@ -81,15 +81,15 @@ export function ConscienceWordmark({
         className,
       )}
     >
-      <span className="text-[0.74rem] sm:text-[0.78rem] font-bold uppercase tracking-[0.20em] flex items-baseline gap-1.5">
-        <span className="wordmark-shimmer">Conscience</span>
+      <span className="text-[0.74rem] sm:text-[0.78rem] font-bold tracking-[0.20em] flex items-baseline gap-1.5">
+        <span className="wordmark-shimmer">CONSCIENCE</span>
         <span
           className="text-accent"
           style={{
             textShadow: "0 0 10px rgba(59,125,255,0.55)",
           }}
         >
-          OS
+          Os
         </span>
       </span>
       <ConscienceMark size={markSize} />

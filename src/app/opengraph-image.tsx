@@ -53,17 +53,16 @@ export default function OG() {
         <div
           style={{
             fontSize: 22,
-            fontWeight: 600,
-            letterSpacing: "0.18em",
-            textTransform: "uppercase",
+            fontWeight: 700,
+            letterSpacing: "0.20em",
             color: "#f4f4f5",
             display: "flex",
-            alignItems: "center",
+            alignItems: "baseline",
             gap: 12,
           }}
         >
-          <span>Conscience</span>
-          <span style={{ color: "#3b7dff" }}>OS</span>
+          <span>CONSCIENCE</span>
+          <span style={{ color: "#3b7dff" }}>Os</span>
         </div>
         <div
           style={{
