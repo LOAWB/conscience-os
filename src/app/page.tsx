@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Search, Layers, Cpu, Rocket } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/section";
@@ -26,18 +25,18 @@ export default function Home() {
                 <p className="mt-7 text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl">
                   {siteConfig.subhead}
                 </p>
-                <div className="mt-10 flex items-center gap-6">
+                <div className="mt-10 flex flex-wrap items-center gap-3">
                   <ButtonLink href={siteConfig.ctaPrimary.href} size="lg">
                     {siteConfig.ctaPrimary.label}
                     <ArrowRight className="size-4" />
                   </ButtonLink>
-                  <Link
+                  <ButtonLink
                     href="#how-it-works"
-                    className="text-[0.95rem] text-muted-foreground hover:text-foreground transition-colors duration-150 inline-flex items-center gap-1.5"
+                    variant="secondary"
+                    size="lg"
                   >
                     See how it works
-                    <ArrowRight className="size-3.5" />
-                  </Link>
+                  </ButtonLink>
                 </div>
               </div>
 
@@ -218,35 +217,44 @@ export default function Home() {
             {[
               {
                 step: "01",
+                icon: Search,
                 title: "Audit",
                 body: "We break down your current systems and identify friction.",
               },
               {
                 step: "02",
+                icon: Layers,
                 title: "Design",
                 body: "We map a system built around your workflow.",
               },
               {
                 step: "03",
+                icon: Cpu,
                 title: "Build",
                 body: "We create and implement your custom solution.",
               },
               {
                 step: "04",
+                icon: Rocket,
                 title: "Deploy",
                 body: "Your business runs on a system that actually fits.",
               },
-            ].map((s) => (
+            ].map(({ step, icon: Icon, title, body }) => (
               <div
-                key={s.step}
+                key={step}
                 className="rounded-xl glass-card glass-card-hover p-7 transition-colors duration-200"
               >
-                <p className="font-mono text-xs text-accent">{s.step}</p>
-                <h3 className="mt-5 font-semibold text-lg tracking-tight">
-                  {s.title}
+                <div className="flex items-center justify-between mb-7">
+                  <div className="inline-flex items-center justify-center size-12 rounded-lg icon-box">
+                    <Icon className="size-5 text-white" strokeWidth={1.75} />
+                  </div>
+                  <span className="font-mono text-xs text-accent">{step}</span>
+                </div>
+                <h3 className="font-semibold text-lg tracking-tight">
+                  {title}
                 </h3>
                 <p className="mt-2 text-[0.95rem] text-muted-foreground leading-relaxed">
-                  {s.body}
+                  {body}
                 </p>
               </div>
             ))}
