@@ -43,14 +43,15 @@ export default function AboutPage() {
             <div className="space-y-5 text-[1.05rem] text-foreground leading-relaxed">
               <p>
                 Conscience Os came out of running a business, not building
-                software for one. I was working in a car wash that was held
-                together with six different apps — one for scheduling, one for
-                payments, one for tracking the crew, none of them talking to
-                each other. Closing shift was two hours of typing the same
-                numbers into three different screens.
+                software for one. I was at a car wash where there wasn't really
+                any system. No software, no dashboard, no way to see the floor
+                in real time — just paper logs and what people remembered.
+                Schedules got built and rebuilt by hand. End-of-night was hours
+                trying to piece together what the day had actually been. The
+                holes were obvious. Somebody had to fix them.
               </p>
               <p>
-                So I built one tool that did all of it. One dashboard. Real
+                So I built the system that wasn't there. One dashboard. Real
                 numbers. Something I could actually look at and understand.
                 After that, the work just felt different. The crew got out
                 earlier. I stopped guessing about what was happening on the lot.
