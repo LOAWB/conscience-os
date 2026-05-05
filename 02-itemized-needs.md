@@ -24,48 +24,48 @@ Remaining v1.0 spend until first client signs: **$0**.
 
 ### A2. Brand decisions Vessel must lock
 
-| Item | What's needed | When |
+| Item | What's needed | Gate |
 |------|---------------|------|
-| Logo direction | Either commission designer OR pick from shadow-proposed AI-generated options | Week 1 |
-| Color palette | Lock primary + secondary + semantic colors (or pick from shadow proposals) | Week 1 |
-| Typography pairing | Sign off on display + body + mono fonts (shadow proposes 3 options) | Week 1 |
-| Voice + tone samples | Provide 5 sample sentences in operator voice that shadows can mimic | Week 1 |
-| Founder photo / headshot | Operator photo for About page hero | Week 2 |
+| Logo direction | Either commission designer OR pick from shadow-proposed AI-generated options | M1 |
+| Color palette | Lock primary + secondary + semantic colors (or pick from shadow proposals) | M1 |
+| Typography pairing | Sign off on display + body + mono fonts (shadow proposes 3 options) | M1 |
+| Voice + tone samples | Provide 5 sample sentences in operator voice that shadows can mimic | M1 |
+| Founder photo / headshot | Operator photo for About page hero | M2 |
 
 ### A3. Content Vessel must provide
 
-| Item | What's needed | When |
+| Item | What's needed | Gate |
 |------|---------------|------|
-| Founder bio | 200-400 word About page narrative (operator-first identity) | Week 2 |
-| Splash Bros case study metrics | Real before/after numbers (cars/hour, revenue, errors, etc.) | Week 2 |
-| Splash Bros customer quote | If available, a real customer testimonial | Week 2 |
-| Audit pricing decision | Explicit dollar amount for the Audit tier (entry-point lead magnet) | Week 5 |
-| Monthly Support pricing decision | Explicit dollar amount per month | Week 5 |
-| Build tier example ranges | Realistic price ranges to display under "custom quoted" | Week 5 |
+| Founder bio | 200-400 word About page narrative (operator-first identity) | M2 |
+| Splash Bros case study metrics | Real before/after numbers (cars/hour, revenue, errors, etc.) | M2 |
+| Splash Bros customer quote | If available, a real customer testimonial | M2 |
+| Audit pricing decision | Explicit dollar amount for the Audit tier (entry-point lead magnet) | M5 |
+| Monthly Support pricing decision | Explicit dollar amount per month | M5 |
+| Build tier example ranges | Realistic price ranges to display under "custom quoted" | M5 |
 
 ### A4. Deployment ops Vessel owns
 
-| Item | What's needed | When |
+| Item | What's needed | Gate |
 |------|---------------|------|
-| Railway service auth | Vessel's Railway account hosts the apps; access shared with shadows via collaborator invite | Week 1 |
-| DNS pointing | conscienceos.com CNAME → Railway service hostname | Week 1 |
-| Email forwarding | Cloudflare Email Routing: hello@ / contact@ / jared@ → Vessel's stable Gmail | Week 1 |
-| Sentry DSN | Add Sentry DSN to Railway environment variables for web + api | Week 2 |
-| Resend API key | Add to Railway env vars for outbound transactional email | Week 2 |
-| Plausible / Umami | Self-hosted on Railway, or SaaS account; analytics ID added to web env | Week 2 |
+| Railway service auth | Vessel's Railway account hosts the apps; access shared with shadows via collaborator invite | M1 |
+| DNS pointing | conscienceos.com CNAME → Railway service hostname | M1 |
+| Email forwarding | Cloudflare Email Routing: hello@ / contact@ / jared@ → Vessel's stable Gmail | M1 |
+| Sentry DSN | Add Sentry DSN to Railway environment variables for web + api | M2 |
+| Resend API key | Add to Railway env vars for outbound transactional email | M2 |
+| Plausible / Umami | Self-hosted on Railway, or SaaS account; analytics ID added to web env | M2 |
 | Anthropic API key | DEFERRED — added to env vars when first paying client lands | Post-launch |
 
-### A5. Weekly milestone sign-offs
+### A5. Milestone sign-offs (per-milestone, not per-week)
 
-| Item | What's needed | Cadence |
+| Item | What's needed | Gate |
 |------|---------------|---------|
-| End-of-week demo | Vessel reviews shipped milestone, confirms acceptance criteria met | Weekly |
-| Asset master list review | Verify status flags (PROMPTED / RENDERING / SELECTED / REFINED / SHIPPED) | Weekly |
-| Lane-claim packet sign-off | Sign off on shadow lane claims at day 2 before build begins | Day 2 |
-| Brand asset sign-off | Approve logo, colors, typography before component library locks | Week 1 |
-| Content sign-off | Approve founder bio, case study, voice samples before site launch | Week 2 |
-| Pricing sign-off | Lock final prices before pricing page ships | Week 5 |
-| Launch readiness signoff | Approve final v1.0 launch after all Q01-Q08 audits pass | Week 6 |
+| End-of-milestone demo | Vessel reviews shipped milestone, confirms acceptance criteria met | Per milestone |
+| Asset master list review | Verify status flags (PROMPTED / RENDERING / SELECTED / REFINED / SHIPPED) | Per milestone |
+| Lane-claim packet sign-off | Sign off on shadow lane claims before build begins | Pre-M1 |
+| Brand asset sign-off | Approve logo, colors, typography before component library locks | M1 |
+| Content sign-off | Approve founder bio, case study, voice samples before site launch | M2 |
+| Pricing sign-off | Lock final prices before pricing page ships | M5 |
+| Launch readiness signoff | Approve final v1.0 launch after all Q01-Q08 audits pass | Gate to ship |
 
 ---
 
@@ -183,26 +183,26 @@ Shadows decide repo structure in lane-claim packet day 2.
 
 | Service | Purpose | Where to get | Status |
 |---------|---------|--------------|--------|
-| Sentry DSN (web) | Error tracking on public site | sentry.io after signup | TODO Week 2 |
-| Sentry DSN (api) | Error tracking on backend | sentry.io after signup | TODO Week 2 |
-| Resend API key | Outbound email (booking, lead notifs) | resend.com after signup | TODO Week 2 |
-| Cal.com API key or webhook secret | Booking sync | cal.com after signup OR self-host | TODO Week 2 |
-| Plausible / Umami | Site analytics | self-host on Railway | TODO Week 2 |
-| JWT_SECRET | Auth signing | generate random 32-byte hex string | TODO Week 1 |
-| JWT_REFRESH_SECRET | Refresh token signing | generate random 32-byte hex string | TODO Week 1 |
+| Sentry DSN (web) | Error tracking on public site | sentry.io after signup | Needed by M1 |
+| Sentry DSN (api) | Error tracking on backend | sentry.io after signup | Needed by M1 |
+| Resend API key | Outbound email (booking, lead notifs) | resend.com after signup | Needed by M5 |
+| Cal.com API key or webhook secret | Booking sync | cal.com after signup OR self-host | Needed by M2 |
+| Plausible / Umami | Site analytics | self-host on Railway | Needed by M2 |
+| JWT_SECRET | Auth signing | generate random 32-byte hex string | Needed by M3 |
+| JWT_REFRESH_SECRET | Refresh token signing | generate random 32-byte hex string | Needed by M3 |
 | Anthropic API key | Intake AI summary | console.anthropic.com (DEFERRED) | TODO post-first-client |
 
 ---
 
 ## D. Physical assets needed
 
-### D1. Day-1 (digital, $0)
-- Vessel headshot for About page hero (use existing photo, or a clean phone-camera shot)
-- Splash Bros before/after screenshots or photos (already exist in your archives)
-- Logo files in SVG (designed by shadow OR commissioned)
+### D1. Digital ($0)
+- Vessel headshot for About page hero (use existing photo, or a clean phone-camera shot) — needed by M2
+- Splash Bros before/after screenshots or photos — needed by M2
+- Logo files in SVG (designed by shadow OR commissioned) — needed by M1
 
-### D2. Day-7+ (physical print, deferred until first audit booked)
-- Business card print order (~$20-50 from MOO or Vistaprint, deferred)
+### D2. Physical print (deferred until first audit booked)
+- Business card print order (~$20-50 from MOO or Vistaprint)
 - Branded QR codes (auto-generated, free, embed in audit sheet + pitch deck)
 - Audit sheet PDF (templated by shadow, printed on-demand by Vessel before client meetings)
 
@@ -218,7 +218,7 @@ Shadows decide repo structure in lane-claim packet day 2.
 | Splash Bros case study metrics | Real numbers only you have access to |
 | Customer testimonial outreach (if pursued) | Trust relationship between you and Splash Bros customers |
 | Domain DNS configuration in Cloudflare | Brand ownership integrity |
-| Each weekly milestone demo + sign-off | Vessel approval gates the next milestone |
+| Each milestone demo + sign-off | Vessel approval gates the next milestone |
 | Krita / Figma hand-touch on hero portraits / logo | Final 2% from 98% AI gen to 100% finished |
 | First audit client outreach + closing | Sales motion only you can execute |
 
@@ -262,7 +262,7 @@ v1.0 ships at $10 total Vessel spend. Build labor is the shadow runtime on Vesse
 
 ## H. Day-zero checklist for Vessel
 
-Before shadows start week 1, Vessel knocks out this checklist (~30 min total):
+Before shadows start M1, Vessel knocks out this checklist (~30 min total):
 
 - [ ] Confirm GitHub LOAWB org access for shadows (already done)
 - [ ] Confirm Cloudflare account holds conscienceos.com (done)
@@ -282,4 +282,4 @@ After this, shadows file lane-claim packets day 2 and build begins.
 
 ## Bottom line
 
-v1.0 ships for $10 total (the domain, already paid). Every other infrastructure choice is free tier. First audit client revenue funds the post-launch upgrade tiers. Vessel owns brand decisions, content sign-off, and weekly milestone gates. Shadows own code, infra, and integrations. Sr verifies the receipt chain and audits each milestone against acceptance criteria. The discipline is real and binding.
+v1.0 ships for $10 total (the domain, already paid). Every other infrastructure choice is free tier. First audit client revenue funds the post-launch upgrade tiers. Vessel owns brand decisions, content sign-off, and per-milestone gates. Shadows own code, infra, and integrations. Sr verifies the receipt chain and audits each milestone against acceptance criteria. The discipline is real and binding.

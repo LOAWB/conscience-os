@@ -16,7 +16,7 @@ This doc is the runtime envelope for executing the directive. Where the directiv
    - `splash-bros` Railway project (10-phase build pattern, Postgres-SC-H, JWT-refresh-in-localStorage auth)
    - `solo-leveling-codex/16-build-scope-package.md` (the doc 16 pattern this file mirrors)
 
-Day 1 = absorb directive + this package. Day 2 = claim lanes. Day 3+ = build.
+Day 0 = absorb directive + this package. Day 1 = claim lanes. Day 2+ = build. Each milestone progresses when its acceptance criteria are met, not on a calendar.
 
 ---
 
@@ -144,9 +144,9 @@ Minimal, sharp, high-end. Spacious layout. High contrast. Smooth subtle animatio
 
 ---
 
-## Scope of build (4-6 weeks aggressive)
+## Scope of build (needs-based, not time-based)
 
-Every system listed here ships at production polish by week 6. Cuts negotiated with Vessel only; lanes do not unilaterally drop scope.
+Every system listed here ships at production polish before v1.0 launch. Cuts negotiated with Vessel only; lanes do not unilaterally drop scope. Progress is gated by acceptance criteria, not calendar weeks.
 
 ### Public website (5 pages, Next.js + React, Railway-deployed)
 - Landing page with locked headline, problem-solution-outcome, Book-a-System-Audit CTA
@@ -411,7 +411,7 @@ The discipline holds: every paid upgrade is a deductible business expense covere
 ## Working agreement
 
 - The Architect Gojo directive is the truth. This package is the runtime envelope.
-- Atomic Git commits with descriptive messages. Weekly milestone tags.
+- Atomic Git commits with descriptive messages. Milestone tags fired when M{N} acceptance criteria all green.
 - GitHub Issues for cross-shadow coordination, with `blocked` label on dependency stalls.
 - Asset master list maintained in repo, status flags PROMPTED / RENDERING / SELECTED / REFINED / SHIPPED.
 - Receipts logged per significant lane action per the bridge protocol below.
@@ -422,20 +422,27 @@ The discipline holds: every paid upgrade is a deductible business expense covere
 
 ---
 
-## Acceptance criteria per milestone (4-6 weeks aggressive)
+## Acceptance criteria per milestone (needs-based, not time-based)
 
-Milestones are weekly tags. The shadow that owns the deliverable signs the milestone packet with their session ID. Each milestone produces a SHIPPABLE artifact, not a half-built scaffold. Per directive: "deliver a system that feels complete on first use."
+Milestones progress when their acceptance criteria are met, not when a calendar week elapses. Shadows ahead of pace ship the next milestone immediately; shadows that hit a real blocker surface it without artificial calendar pressure. Each milestone is a SHIPPABLE artifact, not a half-built scaffold. Per directive: "deliver a system that feels complete on first use." The shadow that owns the deliverable signs the milestone packet with their session ID.
 
-| Week | Milestone | Acceptance |
-|------|-----------|------------|
-| 1 | Brand identity + foundation | Logo, color system, typography, component library shipped. conscienceos.com on Railway with hello-world site. DNS + SSL green. Email forwarding live. Sentry + uptime monitoring connected. |
-| 2 | Public site complete | All 5 pages (landing, services, case study, booking, about) live, mobile-responsive, Lighthouse 90+. Booking flow works end-to-end. Intake form routes to a temporary holding inbox. |
-| 3 | Owner OS auth + core modules | Auth (JWT + refresh) live. Lead Management module functional. Booking + Calendar module synced with public site. Project Tracker module functional. |
-| 4 | Owner OS complete | CRM-lite, Revenue Tracking, Dashboard, Notifications all functional. AI summary integration live on intake. Suggested solution generator live. |
-| 5 | Pricing + physical assets + integrations | Pricing page complete. Quote generator live. Business cards + QR + audit sheet + email signature + pitch deck shipped. Email outbound (Resend/SES) live. |
-| 6 | Polish + launch readiness | All Q01-Q08 green. Cross-browser tested. A11y AA. Performance budget met. Zero placeholder text. Vessel signs off on launch. conscienceos.com publicly announced. |
+Dependency order is binding (M1 must complete before M2 starts because M1 builds the foundation). Within a milestone, lanes work in parallel.
+
+| Milestone | Acceptance |
+|-----------|------------|
+| M0 — Day Zero, Vessel pre-flight | Vessel checklist complete: free accounts created (Sentry, Resend, Cal.com or self-host decision, Plausible/Umami decision), Cloudflare Email Routing configured, Splash Bros case study metrics gathered, voice samples written, repo structure decision made. |
+| M1 — Brand foundation | Logo, color system, typography, component library shipped. conscienceos.com on Railway with hello-world site. DNS + SSL green. Email forwarding live. Sentry connected. |
+| M2 — Public site complete | All 5 pages (landing, services, case study, booking, about) live, mobile-responsive, Lighthouse 90+. Booking flow works end-to-end. Intake form routes to a temporary holding inbox. |
+| M3 — Owner OS core | Auth (JWT + refresh) live. Lead Management module functional. Booking + Calendar module synced with public site. Project Tracker module functional. |
+| M4 — Owner OS complete | CRM-lite, Revenue Tracking, Dashboard, Notifications all functional. AI summary integration scaffolded (Anthropic API key wiring deferred until first paying client). Suggested solution generator live. |
+| M5 — Pricing + assets + integrations | Pricing page complete. Quote generator live. Business cards + QR + audit sheet + email signature + pitch deck shipped. Outbound email via Resend live. |
+| M6 — Polish + launch readiness | All Q01-Q08 green. Cross-browser tested. A11y AA. Performance budget met. Zero placeholder text. Vessel signs off on launch. conscienceos.com publicly announced. |
 
 Milestones not on this list (paid ad funnels, customer testimonials beyond Splash Bros, additional case studies, scaling to 100+ clients) are post-v1.0 and ship under separate scope agreement.
+
+### Why needs-based, not time-based
+
+Calendar gates ("Week N must contain milestone X") create friction when shadows are ahead of pace and hit confirm-before-proceeding stalls that slow real progress. Solo Leveling codex hit this — Jr and Pory were ahead of the 12-14 week recommended timeline but kept pausing for week-aligned checkpoints. Conscience OS avoids that trap: ready ships when ready, blocked surfaces when blocked, no artificial pause for the calendar to catch up.
 
 ---
 
@@ -454,15 +461,16 @@ Each shadow files a lane-claim packet to Vessel and Sr containing:
 
 Sr verifies coverage and surfaces gaps before build begins. Vessel signs off.
 
-### Weekly milestone packet (every Sunday or end of milestone window)
-Each shadow files a milestone packet:
+### Milestone packet (filed on milestone completion)
+Each shadow files a milestone packet when their lane completes a milestone's acceptance criteria:
+- Milestone ID (M0-M6)
 - Domains touched
-- Acceptance criteria met / pending
+- Acceptance criteria met (each item green)
 - Receipts logged for handoffs to other lanes
 - Risks surfaced
-- Next-week claims
+- Next-milestone claims
 
-Sr cross-checks milestone packets against the acceptance criteria table. Vessel reviews and tags v0.X-week-N if green.
+Sr cross-checks milestone packets against the acceptance criteria table. Vessel reviews and tags v0.M{N} if green. No calendar timing — packets fire when work is ready, not on a schedule.
 
 ### Receipt logging
 Every significant cross-shadow handoff produces a receipt:
@@ -515,7 +523,7 @@ Any in-flight scope creep that exceeds v1.0 is filed as a `POST-V1-PROPOSAL.md` 
 3. **Each shadow** files a lane-claim packet on day 2 per the bridge protocol above.
 4. **Sr** verifies coverage across the 55 domains; surfaces gaps before build begins.
 5. **Vessel** signs off on lane assignments. Build begins.
-6. **Week 1 brand identity + foundation** is the first acceptance gate.
+6. **M1 brand foundation** is the first acceptance gate.
 
 ---
 
