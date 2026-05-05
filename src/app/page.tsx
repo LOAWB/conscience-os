@@ -125,6 +125,10 @@ export default function Home() {
           <p className="mt-9 text-[1.1rem] text-foreground font-medium">
             One system. Built for how you operate.
           </p>
+          <p className="mt-5 text-[0.95rem] text-muted-foreground leading-relaxed">
+            Behind every system we build is a centralized platform designed to
+            manage operations, workflows, and ongoing execution.
+          </p>
         </Container>
       </Section>
 

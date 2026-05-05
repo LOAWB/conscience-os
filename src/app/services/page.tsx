@@ -88,17 +88,14 @@ export default function ServicesPage() {
               Start with an audit.
             </h2>
             <p className="mt-5 text-[0.95rem] text-muted-foreground leading-relaxed max-w-xl mx-auto">
-              Every engagement begins with the System Audit. It's the cheapest,
-              fastest way to know what to do next — whether that's building with
-              us or fixing things yourself.
+              Every engagement begins with the System Audit. The fastest way to
+              know what to do next — whether that's building with us, with
+              someone else, or fixing things yourself.
             </p>
-            <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+            <div className="mt-9 flex justify-center">
               <ButtonLink href={siteConfig.ctaPrimary.href} size="lg">
                 {siteConfig.ctaPrimary.label}
                 <ArrowRight className="size-4" />
-              </ButtonLink>
-              <ButtonLink href="/pricing" variant="ghost" size="lg">
-                See pricing
               </ButtonLink>
             </div>
           </div>

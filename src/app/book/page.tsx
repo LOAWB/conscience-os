@@ -5,7 +5,7 @@ import { BookingForm } from "@/components/booking-form";
 export const metadata = {
   title: "Book a System Audit",
   description:
-    "Two-week deep audit. Concrete fix list. Start the conversation.",
+    "Tell us what's slowing you down. Every engagement starts with a System Audit.",
 };
 
 export default function BookPage() {
@@ -21,8 +21,8 @@ export default function BookPage() {
           </h1>
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
             Fill this in like you'd describe it to a friend. We'll get back to
-            you within one business day to schedule the kickoff call. The audit
-            takes two weeks. The fix list is yours either way.
+            you within one business day to schedule the kickoff call. Every
+            engagement is custom; the audit findings are yours either way.
           </p>
         </Container>
       </Section>
@@ -34,16 +34,16 @@ export default function BookPage() {
           <div className="mt-12 grid sm:grid-cols-3 gap-6 text-center">
             {[
               {
-                title: "Two weeks",
-                body: "Audit timeline. Start to delivered report.",
+                title: "Custom engagement",
+                body: "Tailored to how your business actually runs.",
               },
               {
-                title: "Fixed price",
-                body: "$2,500 for the audit. No surprises.",
+                title: "Real reply",
+                body: "From a real person, within one business day.",
               },
               {
-                title: "Yours forever",
-                body: "Walk away with the report. Build with anyone.",
+                title: "Yours either way",
+                body: "Audit findings are yours. Build with anyone.",
               },
             ].map((s) => (
               <div key={s.title} className="p-5 rounded-xl bg-muted">

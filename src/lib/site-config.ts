@@ -10,7 +10,7 @@ export const siteConfig = {
   pillar:
     "We analyze your business, identify inefficiencies, and build custom software systems that increase revenue and eliminate operational friction.",
   ctaPrimary: { label: "Book a System Audit", href: "/book" },
-  ctaSecondary: { label: "See the work", href: "/case-study/splash-bros" },
+  ctaSecondary: { label: "See the work", href: "/case-study" },
   trustSignals: [
     "Built for real businesses",
     "Custom systems, not templates",
@@ -19,8 +19,8 @@ export const siteConfig = {
   contact: { email: "hello@conscienceos.com" },
   nav: [
     { label: "Services", href: "/services" },
-    { label: "Pricing", href: "/pricing" },
-    { label: "Case study", href: "/case-study/splash-bros" },
+    { label: "How to work together", href: "/work-together" },
+    { label: "Case study", href: "/case-study" },
     { label: "About", href: "/about" },
   ],
 } as const;
@@ -81,133 +81,73 @@ export const services: Service[] = [
   },
 ];
 
-export type PricingTier = {
+export type EngagementStage = {
   slug: string;
   name: string;
-  price: string;
-  period: string;
-  summary: string;
+  description: string;
   includes: string[];
   cta: { label: string; href: string };
   highlight?: boolean;
-  flag?: "DRAFT_PRICE";
 };
 
-export const pricingTiers: PricingTier[] = [
+export const engagementStages: EngagementStage[] = [
   {
     slug: "audit",
-    name: "Business System Audit",
-    price: "$2,500",
-    period: "one-time",
-    summary:
-      "Two-week deep dive. Concrete fix list. The fastest way to know what to do next.",
+    name: "System Audit",
+    description:
+      "We analyze your business and identify exactly where systems can improve efficiency and revenue.",
     includes: [
-      "60-minute kickoff call",
-      "Two-week audit of every business system",
-      "Written report: what's broken, ranked by ROI",
-      "Prioritized fix list with effort vs impact",
-      "30-minute walkthrough call",
-      "Audit yours forever — build with anyone",
+      "Breakdown of current setup",
+      "Identified inefficiencies",
+      "Custom system direction",
     ],
-    cta: { label: "Book the audit", href: "/book" },
-    flag: "DRAFT_PRICE",
+    cta: { label: "Book a System Audit", href: "/book" },
   },
   {
     slug: "build",
-    name: "Custom Software Build",
-    price: "Custom quoted",
-    period: "after audit",
-    summary:
-      "Production-grade software, scoped from your audit. Fixed price, fixed timeline, ownership transferred on delivery.",
+    name: "Custom Build",
+    description:
+      "Tailored to your business. Production-grade systems scoped directly from the audit findings, deployed on infrastructure you own.",
     includes: [
-      "Scope written directly from audit findings",
-      "Fixed-price proposal with clear deliverables",
-      "Production-grade code: Node, Postgres, React",
-      "Deployed to your infrastructure",
-      "Source code transferred outright",
-      "30-day post-launch support included",
+      "Scope written from audit findings",
+      "Custom from start to finish",
+      "Source transferred on delivery",
     ],
-    cta: { label: "Start with an audit", href: "/book" },
+    cta: { label: "Book a System Audit", href: "/book" },
     highlight: true,
-    flag: "DRAFT_PRICE",
-  },
-  {
-    slug: "support",
-    name: "Monthly Support",
-    price: "$4,000",
-    period: "/month",
-    summary:
-      "Ongoing engineering. Bug fixes, feature work, infrastructure care. For businesses whose software needs to keep moving.",
-    includes: [
-      "Up to 40 hours of engineering each month",
-      "Bug fixes and small features prioritized weekly",
-      "Infrastructure monitoring and maintenance",
-      "Quarterly business review tied to system performance",
-      "First-response SLA on critical issues",
-      "Cancel any time after the first 90 days",
-    ],
-    cta: { label: "Talk to us", href: "/book" },
-    flag: "DRAFT_PRICE",
   },
 ];
 
-export const splashBros = {
-  client: "Splash Bros",
-  industry: "Car wash operation",
-  engagement: "Audit + Build + Monthly Support",
-  timeline: "Q4 2025 → ongoing",
+export const systemImplementation = {
+  industry: "Operational business",
+  engagement: "Audit · Build · Ongoing support",
+  timeline: "Live, ongoing",
   oneLine:
-    "Custom operations system replaced four off-the-shelf tools, cut staff overhead 12 hours a week, lifted throughput by ~75%.",
+    "Built from real operational experience inside a working business. Custom centralized system replaced fragmented tools and simplified how the operation runs.",
+  context: [
+    "Multiple disconnected tools running scheduling, payments, customer history, and team dispatch in parallel",
+    "Manual reconciliation and tribal-knowledge workarounds holding the operation together",
+    "No unified view of throughput, revenue, or daily flow for the operator",
+    "Different staff seeing different versions of the same data",
+  ],
   problem: [
-    "Three different scheduling tools, none of them talking to each other.",
-    "Manual end-of-day reconciliation eating two hours every closing shift.",
-    "No visibility into crew productivity beyond gut feel.",
-    "Recurring payment disputes from customers because the system couldn't prove what services they got.",
+    "Fragmented systems: three tools for what should have been one workflow",
+    "Manual rework eating hours every shift",
+    "Operational friction the team felt every day",
+    "No place to see the full state of the business at a glance",
   ],
   solution: [
-    "Single Postgres-backed operations system. One place for bookings, crew dispatch, customer history, and revenue.",
-    "Dashboard for the operator: cars in flight, crew utilization, revenue today, this week, this month.",
-    "Customer-facing booking flow with payment captured up-front, dispute-proof receipt history.",
-    "Mobile-first crew app: each crew member sees their queue, marks complete, surfaces issues to the operator in real time.",
+    "Single centralized system replacing the fragmented stack",
+    "Operator dashboard with real-time visibility into the live state of the business",
+    "Customer-facing flow with clear receipt history and dispute-proof records",
+    "Mobile-first team interface that fits how the operation actually works",
   ],
-  metrics: [
-    {
-      label: "Cars per hour",
-      before: "8",
-      after: "14",
-      delta: "+75%",
-      flag: "DRAFT" as const,
-    },
-    {
-      label: "Monthly revenue",
-      before: "~$28K",
-      after: "~$45K",
-      delta: "+61%",
-      flag: "DRAFT" as const,
-    },
-    {
-      label: "Reconciliation time per close",
-      before: "120 min",
-      after: "10 min",
-      delta: "−92%",
-      flag: "DRAFT" as const,
-    },
-    {
-      label: "Payment-dispute rate",
-      before: "7%",
-      after: "1.5%",
-      delta: "−79%",
-      flag: "DRAFT" as const,
-    },
-    {
-      label: "Staff hours saved per week",
-      before: "—",
-      after: "12 hrs",
-      delta: "new",
-      flag: "DRAFT" as const,
-    },
+  outcome: [
+    "Simplified workflows that match how the business operates",
+    "Unified operations: one place for bookings, dispatch, customer history, revenue",
+    "Reduced manual rework and end-of-shift reconciliation overhead",
+    "Real-time operator visibility, with the team adopting the system because it actually fits",
   ],
   operatorTake:
-    "The wins compounded fast. The dashboard turned the operation legible — the owner stopped making decisions on memory and started making them on numbers. Reconciliation went from a closing-shift ritual to a 10-minute glance. The crew liked it because they got out earlier.",
-  customerVoice: null as null | { quote: string; attribution: string },
+    "The dashboard turned the operation legible. Decisions stopped getting made on memory and started getting made on the live state. Reconciliation went from a closing-shift ritual to a glance. The team adopted it because the system fit how they actually worked.",
 };
