@@ -13,6 +13,8 @@ const leadSchema = z.object({
   tier: z.enum(["audit", "build", "support", "not-sure"]).default("audit"),
 });
 
+type Lead = z.infer<typeof leadSchema>;
+
 export async function POST(req: Request) {
   let json: unknown;
   try {
@@ -31,7 +33,7 @@ export async function POST(req: Request) {
   const lead = parsed.data;
 
   const submittedAt = new Date().toISOString();
-  const summary = formatLead(lead, submittedAt);
+  const summary = formatLeadSummary(lead, submittedAt);
 
   console.log("[lead]", summary);
 
@@ -41,8 +43,10 @@ export async function POST(req: Request) {
     process.env.LEAD_FROM || "Conscience OS <onboarding@resend.dev>";
 
   if (apiKey) {
+    const resend = new Resend(apiKey);
+
+    // Internal copy: full intake to the inbox.
     try {
-      const resend = new Resend(apiKey);
       await resend.emails.send({
         from: fromAddress,
         to: inbox,
@@ -51,7 +55,20 @@ export async function POST(req: Request) {
         text: summary,
       });
     } catch (err) {
-      console.error("[lead] resend error", err);
+      console.error("[lead] internal email error", err);
+    }
+
+    // Confirmation to the submitter: simple, clean, no spam feel.
+    try {
+      await resend.emails.send({
+        from: fromAddress,
+        to: lead.email,
+        replyTo: inbox,
+        subject: "We got your audit request",
+        text: confirmationEmailText(lead),
+      });
+    } catch (err) {
+      console.error("[lead] confirmation email error", err);
     }
   }
 
@@ -74,7 +91,7 @@ export async function POST(req: Request) {
   return NextResponse.json({ ok: true });
 }
 
-function formatLead(lead: z.infer<typeof leadSchema>, ts: string) {
+function formatLeadSummary(lead: Lead, ts: string) {
   return [
     `Submitted: ${ts}`,
     `Name: ${lead.name}`,
@@ -91,6 +108,30 @@ function formatLead(lead: z.infer<typeof leadSchema>, ts: string) {
     "",
     "What 'fixed' looks like:",
     lead.outcome || "(not provided)",
+  ].join("\n");
+}
+
+function confirmationEmailText(lead: Lead) {
+  const firstName = lead.name.split(" ")[0] || lead.name;
+  return [
+    `Hi ${firstName},`,
+    "",
+    "Thanks for reaching out. We read every intake personally — you'll hear back from us within one business day with next steps.",
+    "",
+    "What happens next:",
+    "  1. We review what you sent.",
+    "  2. You get a real reply from a real person (no auto-responder loop).",
+    "  3. We schedule a 60-minute kickoff call to walk through the audit.",
+    "",
+    "A few things you might be wondering about:",
+    "  · Audit timeline: two weeks, start to finished report",
+    "  · Audit price: $2,500, fixed",
+    "  · You walk away with the report — build with anyone you like",
+    "",
+    "If you need to add anything or have a quick question, just reply to this email. It goes to the same inbox we read.",
+    "",
+    "— Conscience OS",
+    "  hello@conscienceos.com",
   ].join("\n");
 }
 

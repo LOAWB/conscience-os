@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Sparkles, Activity, GitBranch } from "lucide-react";
+import { ArrowRight, Activity, GitBranch, Sparkles } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/section";
@@ -8,40 +8,29 @@ import { siteConfig, services, splashBros } from "@/lib/site-config";
 export default function Home() {
   return (
     <>
-      {/* HERO */}
+      {/* HERO — single dominant CTA */}
       <section className="relative overflow-hidden">
-        <div aria-hidden className="absolute inset-0 grid-pattern opacity-60" />
+        <div aria-hidden className="absolute inset-0 grid-pattern opacity-40" />
         <div
           aria-hidden
           className="absolute inset-x-0 top-0 h-[60vh] bg-gradient-to-b from-background via-background/95 to-transparent"
         />
         <div className="relative">
           <Container>
-            <div className="pt-20 pb-24 sm:pt-28 sm:pb-32 lg:pt-36 lg:pb-40 max-w-3xl fade-in-up">
-              <p className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent-soft text-accent text-xs font-medium tracking-wide uppercase mb-7">
-                <span className="size-1.5 rounded-full bg-accent" />
-                Premium AI development
-              </p>
+            <div className="pt-20 pb-20 sm:pt-28 sm:pb-24 lg:pt-36 lg:pb-28 max-w-3xl fade-in-up">
               <h1 className="font-semibold tracking-[-0.02em] text-foreground leading-[1.05] text-[length:var(--text-display-xl)]">
                 {siteConfig.headline}
               </h1>
               <p className="mt-7 text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl">
-                {siteConfig.pillar}
+                {siteConfig.subhead}
               </p>
-              <div className="mt-9 flex flex-wrap items-center gap-3">
+              <div className="mt-10">
                 <ButtonLink href={siteConfig.ctaPrimary.href} size="lg">
                   {siteConfig.ctaPrimary.label}
                   <ArrowRight className="size-4" />
                 </ButtonLink>
-                <ButtonLink
-                  href={siteConfig.ctaSecondary.href}
-                  variant="secondary"
-                  size="lg"
-                >
-                  {siteConfig.ctaSecondary.label}
-                </ButtonLink>
               </div>
-              <p className="mt-7 text-sm text-subtle">
+              <p className="mt-6 text-sm text-subtle">
                 Two-week audit. Concrete fix list. Decide next steps with real
                 numbers.
               </p>
@@ -49,6 +38,25 @@ export default function Home() {
           </Container>
         </div>
       </section>
+
+      {/* TRUST STRIP — subtle credibility */}
+      <div className="border-y border-border bg-muted/40">
+        <Container>
+          <div className="py-5 flex flex-wrap items-center justify-center gap-x-7 gap-y-2 text-[0.72rem] font-mono uppercase tracking-[0.16em] text-subtle">
+            {siteConfig.trustSignals.map((signal, i) => (
+              <span key={signal} className="flex items-center gap-x-7">
+                {i > 0 && (
+                  <span
+                    aria-hidden
+                    className="size-1 rounded-full bg-border-strong"
+                  />
+                )}
+                <span>{signal}</span>
+              </span>
+            ))}
+          </div>
+        </Container>
+      </div>
 
       {/* PROBLEM */}
       <Section variant="muted">
@@ -78,14 +86,16 @@ export default function Home() {
               {
                 icon: Sparkles,
                 title: "Missed revenue",
-                body: "Booking forms that drop leads. Quotes that get forgotten. Customer flows that leak at every step. You can feel it. You can't quite name it.",
+                body: "Booking forms that drop leads. Quotes that get forgotten. Customer flows that leak at every step.",
               },
             ].map(({ icon: Icon, title, body }) => (
               <div
                 key={title}
                 className="rounded-xl bg-white border border-border p-7 shadow-soft"
               >
-                <Icon className="size-5 text-accent" strokeWidth={1.75} />
+                <div className="inline-flex items-center justify-center size-10 rounded-lg bg-accent-soft text-accent">
+                  <Icon className="size-5" strokeWidth={2} />
+                </div>
                 <h3 className="mt-5 font-semibold text-lg tracking-tight">
                   {title}
                 </h3>
@@ -116,7 +126,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-0">
               {[
                 {
                   step: "01",
@@ -139,11 +149,14 @@ export default function Home() {
                   body: "Numbers on every fix. Throughput, error rate, revenue. We tell you what the system is doing, and we tell you what to do next.",
                 },
               ].map((s) => (
-                <div key={s.step} className="flex gap-5">
-                  <div className="font-mono text-xs text-accent pt-1.5 w-7 shrink-0">
+                <div
+                  key={s.step}
+                  className="flex gap-5 py-6 border-b border-border last:border-0"
+                >
+                  <div className="font-mono text-xs text-accent pt-1 w-7 shrink-0">
                     {s.step}
                   </div>
-                  <div className="flex-1 pb-6 border-b border-border last:border-0">
+                  <div className="flex-1">
                     <h3 className="font-semibold text-[1.05rem] tracking-tight">
                       {s.title}
                     </h3>
@@ -245,7 +258,7 @@ export default function Home() {
         </Container>
       </Section>
 
-      {/* CTA */}
+      {/* CTA — single dominant button */}
       <Section variant="muted">
         <Container size="narrow">
           <div className="text-center">
@@ -257,15 +270,22 @@ export default function Home() {
               You walk away with a written plan, whether you build with us or
               anyone else.
             </p>
-            <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+            <div className="mt-9 flex justify-center">
               <ButtonLink href={siteConfig.ctaPrimary.href} size="lg">
                 {siteConfig.ctaPrimary.label}
                 <ArrowRight className="size-4" />
               </ButtonLink>
-              <ButtonLink href="/pricing" variant="ghost" size="lg">
-                See pricing
-              </ButtonLink>
             </div>
+            <p className="mt-5 text-xs text-subtle">
+              Or{" "}
+              <Link
+                href="/pricing"
+                className="text-foreground hover:text-accent transition-colors underline-offset-4 hover:underline"
+              >
+                see pricing
+              </Link>{" "}
+              first.
+            </p>
           </div>
         </Container>
       </Section>
