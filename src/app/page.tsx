@@ -1,14 +1,14 @@
 import Link from "next/link";
-import { ArrowRight, Activity, GitBranch, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/section";
-import { siteConfig, services, splashBros } from "@/lib/site-config";
+import { siteConfig } from "@/lib/site-config";
 
 export default function Home() {
   return (
     <>
-      {/* HERO — single dominant CTA */}
+      {/* 1. HERO — immediate clarity + action */}
       <section className="relative overflow-hidden">
         <div aria-hidden className="absolute inset-0 grid-pattern opacity-40" />
         <div
@@ -24,22 +24,25 @@ export default function Home() {
               <p className="mt-7 text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl">
                 {siteConfig.subhead}
               </p>
-              <div className="mt-10">
+              <div className="mt-10 flex items-center gap-6">
                 <ButtonLink href={siteConfig.ctaPrimary.href} size="lg">
                   {siteConfig.ctaPrimary.label}
                   <ArrowRight className="size-4" />
                 </ButtonLink>
+                <Link
+                  href="#how-it-works"
+                  className="text-[0.95rem] text-muted-foreground hover:text-foreground transition-colors duration-150 inline-flex items-center gap-1.5"
+                >
+                  See how it works
+                  <ArrowRight className="size-3.5" />
+                </Link>
               </div>
-              <p className="mt-6 text-sm text-subtle">
-                Two-week audit. Concrete fix list. Decide next steps with real
-                numbers.
-              </p>
             </div>
           </Container>
         </div>
       </section>
 
-      {/* TRUST STRIP — subtle credibility */}
+      {/* TRUST STRIP — subtle credibility band */}
       <div className="border-y border-border bg-muted/40">
         <Container>
           <div className="py-5 flex flex-wrap items-center justify-center gap-x-7 gap-y-2 text-[0.72rem] font-mono uppercase tracking-[0.16em] text-subtle">
@@ -58,217 +61,265 @@ export default function Home() {
         </Container>
       </div>
 
-      {/* PROBLEM */}
-      <Section variant="muted">
-        <Container>
-          <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-wider text-accent mb-4">
-              The problem
-            </p>
-            <h2 className="font-semibold tracking-[-0.02em] text-[length:var(--text-display-md)] leading-[1.1]">
-              Software is supposed to make business easier. Most of it makes you
-              slower.
-            </h2>
-          </div>
-
-          <div className="mt-14 grid md:grid-cols-3 gap-5">
-            {[
-              {
-                icon: Activity,
-                title: "Operational drag",
-                body: "Three tools that don't talk to each other. Manual reconciliation eating closing-shift hours. Reports nobody can run.",
-              },
-              {
-                icon: GitBranch,
-                title: "Manual rework",
-                body: "Repetitive tasks staff can do in their sleep — and increasingly do, by mistake. Errors compound. Customers feel them.",
-              },
-              {
-                icon: Sparkles,
-                title: "Missed revenue",
-                body: "Booking forms that drop leads. Quotes that get forgotten. Customer flows that leak at every step.",
-              },
-            ].map(({ icon: Icon, title, body }) => (
-              <div
-                key={title}
-                className="rounded-xl bg-white border border-border p-7 shadow-soft"
-              >
-                <div className="inline-flex items-center justify-center size-10 rounded-lg bg-accent-soft text-accent">
-                  <Icon className="size-5" strokeWidth={2} />
-                </div>
-                <h3 className="mt-5 font-semibold text-lg tracking-tight">
-                  {title}
-                </h3>
-                <p className="mt-2 text-[0.95rem] text-muted-foreground leading-relaxed">
-                  {body}
-                </p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </Section>
-
-      {/* SOLUTION */}
-      <Section>
-        <Container>
-          <div className="grid md:grid-cols-[1fr_1.5fr] gap-12 lg:gap-20 items-start">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-accent mb-4">
-                How we work
-              </p>
-              <h2 className="font-semibold tracking-[-0.02em] text-[length:var(--text-display-md)] leading-[1.1]">
-                Analyze. Identify. Build. Measure.
-              </h2>
-              <p className="mt-6 text-[0.95rem] text-muted-foreground leading-relaxed">
-                Every engagement starts with an audit. We map every system in
-                your business, find what's leaking, then quote what it costs to
-                fix. You decide what to build.
-              </p>
-            </div>
-
-            <div className="space-y-0">
-              {[
-                {
-                  step: "01",
-                  title: "Analyze",
-                  body: "Two-week deep audit. Every system, every workflow, every integration. We talk to your operators and shadow your day.",
-                },
-                {
-                  step: "02",
-                  title: "Identify",
-                  body: "Written report ranks every problem by ROI. Effort vs impact. The fixes you'd do this quarter, the fixes that wait.",
-                },
-                {
-                  step: "03",
-                  title: "Build",
-                  body: "Production-grade software, scoped from your audit. Fixed price, fixed timeline. Source transferred on delivery.",
-                },
-                {
-                  step: "04",
-                  title: "Measure",
-                  body: "Numbers on every fix. Throughput, error rate, revenue. We tell you what the system is doing, and we tell you what to do next.",
-                },
-              ].map((s) => (
-                <div
-                  key={s.step}
-                  className="flex gap-5 py-6 border-b border-border last:border-0"
-                >
-                  <div className="font-mono text-xs text-accent pt-1 w-7 shrink-0">
-                    {s.step}
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-[1.05rem] tracking-tight">
-                      {s.title}
-                    </h3>
-                    <p className="mt-1.5 text-[0.95rem] text-muted-foreground leading-relaxed">
-                      {s.body}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* OUTCOME / Splash Bros teaser */}
-      <Section variant="ink">
-        <Container>
-          <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-wider text-accent mb-4">
-              Real results
-            </p>
-            <h2 className="font-semibold tracking-[-0.02em] text-[length:var(--text-display-md)] leading-[1.1] text-white">
-              {splashBros.client}: {splashBros.oneLine}
-            </h2>
-          </div>
-
-          <div className="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-5">
-            {splashBros.metrics.slice(0, 4).map((m) => (
-              <div
-                key={m.label}
-                className="rounded-xl bg-white/5 border border-white/10 p-6"
-              >
-                <p className="text-xs text-white/60 font-mono uppercase tracking-wider">
-                  {m.label}
-                </p>
-                <p className="mt-3 font-semibold text-2xl sm:text-3xl text-white tracking-tight">
-                  {m.delta}
-                </p>
-                <p className="mt-1 text-xs text-white/50 font-mono">
-                  {m.before} → {m.after}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12">
-            <Link
-              href="/case-study/splash-bros"
-              className="inline-flex items-center gap-1.5 text-white hover:text-accent transition-colors text-[0.95rem] font-medium"
-            >
-              Read the full case study
-              <ArrowRight className="size-4" />
-            </Link>
-          </div>
-        </Container>
-      </Section>
-
-      {/* SERVICES PREVIEW */}
-      <Section>
-        <Container>
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-            <div className="max-w-2xl">
-              <p className="text-xs font-semibold uppercase tracking-wider text-accent mb-4">
-                What we do
-              </p>
-              <h2 className="font-semibold tracking-[-0.02em] text-[length:var(--text-display-md)] leading-[1.1]">
-                Four services. Every one of them ships finished.
-              </h2>
-            </div>
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-1.5 text-foreground hover:text-accent transition-colors text-[0.95rem] font-medium"
-            >
-              See all services
-              <ArrowRight className="size-4" />
-            </Link>
-          </div>
-
-          <div className="grid sm:grid-cols-2 gap-5">
-            {services.map((s) => (
-              <Link
-                key={s.slug}
-                href={`/services#${s.slug}`}
-                className="group rounded-xl border border-border bg-white p-7 hover:border-accent transition-colors duration-150"
-              >
-                <h3 className="font-semibold text-[1.1rem] tracking-tight">
-                  {s.name}
-                </h3>
-                <p className="mt-2 text-[0.95rem] text-muted-foreground leading-relaxed">
-                  {s.short}
-                </p>
-                <span className="mt-5 inline-flex items-center gap-1.5 text-sm text-accent font-medium">
-                  Learn more
-                  <ArrowRight className="size-3.5 transition-transform duration-150 group-hover:translate-x-0.5" />
-                </span>
-              </Link>
-            ))}
-          </div>
-        </Container>
-      </Section>
-
-      {/* CTA — single dominant button */}
+      {/* 2. PROBLEM — make the user feel understood */}
       <Section variant="muted">
         <Container size="narrow">
-          <div className="text-center">
+          <p className="text-xs font-semibold uppercase tracking-wider text-accent mb-4">
+            The problem
+          </p>
+          <h2 className="font-semibold tracking-[-0.02em] text-[length:var(--text-display-md)] leading-[1.1]">
+            Most businesses are running on disconnected systems.
+          </h2>
+          <ul className="mt-9 space-y-3.5">
+            {[
+              "Scheduling in one place",
+              "Inventory in another",
+              "Operations held together manually",
+              "Nothing truly working together",
+            ].map((item) => (
+              <li
+                key={item}
+                className="flex gap-3.5 text-[1.05rem] text-foreground leading-relaxed"
+              >
+                <span className="font-mono text-xs text-accent pt-1.5 shrink-0">
+                  →
+                </span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-9 text-[1.1rem] text-muted-foreground leading-relaxed">
+            It works — but it creates friction everywhere.
+          </p>
+        </Container>
+      </Section>
+
+      {/* 3. SOLUTION — define what we do simply */}
+      <Section>
+        <Container size="narrow">
+          <p className="text-xs font-semibold uppercase tracking-wider text-accent mb-4">
+            What we do
+          </p>
+          <h2 className="font-semibold tracking-[-0.02em] text-[length:var(--text-display-md)] leading-[1.1]">
+            We don't sell software.
+            <br />
+            We build systems around your business.
+          </h2>
+          <ul className="mt-9 space-y-3.5">
+            {[
+              "Centralized operations",
+              "Custom workflows",
+              "Tools that match how your team actually works",
+            ].map((item) => (
+              <li
+                key={item}
+                className="flex gap-3.5 text-[1.05rem] text-foreground leading-relaxed"
+              >
+                <span className="font-mono text-xs text-accent pt-1.5 shrink-0">
+                  ✓
+                </span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-9 text-[1.1rem] text-foreground font-medium">
+            One system. Built for how you operate.
+          </p>
+        </Container>
+      </Section>
+
+      {/* 4. ORIGIN STORY — credibility without hype */}
+      <Section variant="ink">
+        <Container size="narrow">
+          <p className="text-xs font-semibold uppercase tracking-wider text-accent mb-4">
+            Origin
+          </p>
+          <h2 className="font-semibold tracking-[-0.02em] text-[length:var(--text-display-md)] leading-[1.1] text-white">
+            Why Conscience OS exists
+          </h2>
+          <div className="mt-10 space-y-6 text-[1.05rem] text-white/85 leading-relaxed">
+            <p>
+              After years operating inside the car wash industry, one thing
+              became clear:
+            </p>
+            <p className="text-white">
+              Everything existed — just not in a way that worked together.
+            </p>
+            <p>Different tools. Different systems. Constant workarounds.</p>
+            <p>
+              So instead of adapting to disconnected software, we built a system
+              around the business itself.
+            </p>
+            <p className="text-white">
+              Centralized. Custom. Built for real operations.
+            </p>
+            <p>It replaced multiple tools and simplified how everything ran.</p>
+            <p className="text-white font-medium">
+              That's what Conscience OS is built on.
+            </p>
+          </div>
+        </Container>
+      </Section>
+
+      {/* 5. VALUE TRANSLATION — story → benefits */}
+      <Section>
+        <Container size="narrow">
+          <p className="text-xs font-semibold uppercase tracking-wider text-accent mb-4">
+            What it means for your business
+          </p>
+          <h2 className="font-semibold tracking-[-0.02em] text-[length:var(--text-display-md)] leading-[1.1]">
+            What you get
+          </h2>
+          <div className="mt-10 grid sm:grid-cols-2 gap-y-5 gap-x-10">
+            {[
+              "Systems built around your workflow",
+              "Less operational friction",
+              "Clearer team execution",
+              "Everything in one place",
+            ].map((item) => (
+              <div
+                key={item}
+                className="flex gap-3.5 text-[1.05rem] text-foreground leading-relaxed"
+              >
+                <span className="font-mono text-xs text-accent pt-1.5 shrink-0">
+                  ✓
+                </span>
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* 6. PROCESS — reduce uncertainty, build trust */}
+      <Section variant="muted" id="how-it-works">
+        <Container>
+          <div className="max-w-2xl">
+            <p className="text-xs font-semibold uppercase tracking-wider text-accent mb-4">
+              Process
+            </p>
             <h2 className="font-semibold tracking-[-0.02em] text-[length:var(--text-display-md)] leading-[1.1]">
-              Ready to know what's actually slowing you down?
+              How it works
             </h2>
-            <p className="mt-5 text-[0.95rem] text-muted-foreground leading-relaxed max-w-xl mx-auto">
-              Start with a Business System Audit. Two weeks. Concrete fix list.
-              You walk away with a written plan, whether you build with us or
-              anyone else.
+          </div>
+
+          <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              {
+                step: "01",
+                title: "Audit",
+                body: "We break down your current systems and identify friction.",
+              },
+              {
+                step: "02",
+                title: "Design",
+                body: "We map a system built around your workflow.",
+              },
+              {
+                step: "03",
+                title: "Build",
+                body: "We create and implement your custom solution.",
+              },
+              {
+                step: "04",
+                title: "Deploy",
+                body: "Your business runs on a system that actually fits.",
+              },
+            ].map((s) => (
+              <div
+                key={s.step}
+                className="rounded-xl bg-white border border-border p-7 shadow-soft"
+              >
+                <p className="font-mono text-xs text-accent">{s.step}</p>
+                <h3 className="mt-5 font-semibold text-lg tracking-tight">
+                  {s.title}
+                </h3>
+                <p className="mt-2 text-[0.95rem] text-muted-foreground leading-relaxed">
+                  {s.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* 7. LIGHT PROOF — real experience without fake metrics */}
+      <Section>
+        <Container size="narrow">
+          <p className="text-xs font-semibold uppercase tracking-wider text-accent mb-4">
+            Real experience
+          </p>
+          <h2 className="font-semibold tracking-[-0.02em] text-[length:var(--text-display-md)] leading-[1.1]">
+            Real system implementation
+          </h2>
+          <div className="mt-9 space-y-5 text-[1.05rem] text-foreground leading-relaxed">
+            <p>
+              Built from real operational experience inside a working business.
+            </p>
+            <p className="text-muted-foreground">
+              Custom systems designed to replace fragmented tools and streamline
+              operations.
+            </p>
+          </div>
+        </Container>
+      </Section>
+
+      {/* 8. OFFER — make the next step tangible */}
+      <Section variant="muted">
+        <Container size="narrow">
+          <div className="rounded-2xl bg-white border border-border p-8 sm:p-10 shadow-soft">
+            <p className="text-xs font-semibold uppercase tracking-wider text-accent mb-4">
+              Start here
+            </p>
+            <h2 className="font-semibold tracking-[-0.02em] text-[length:var(--text-display-sm)] leading-[1.15]">
+              System Audit
+            </h2>
+            <p className="mt-5 text-[1.05rem] text-muted-foreground leading-relaxed">
+              We analyze your business and identify exactly where systems can
+              improve efficiency and revenue.
+            </p>
+
+            <ul className="mt-7 space-y-3.5">
+              {[
+                "Breakdown of current setup",
+                "Identified inefficiencies",
+                "Custom system direction",
+              ].map((item) => (
+                <li
+                  key={item}
+                  className="flex gap-3.5 text-[1rem] text-foreground leading-relaxed"
+                >
+                  <span className="font-mono text-xs text-accent pt-1.5 shrink-0">
+                    ✓
+                  </span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-9">
+              <ButtonLink href={siteConfig.ctaPrimary.href} size="lg">
+                {siteConfig.ctaPrimary.label}
+                <ArrowRight className="size-4" />
+              </ButtonLink>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* 9. FINAL CLOSE — push action */}
+      <Section variant="ink">
+        <Container size="narrow">
+          <div className="text-center">
+            <h2 className="font-semibold tracking-[-0.02em] text-[length:var(--text-display-md)] leading-[1.1] text-white">
+              If your business feels more complicated than it should be, it's
+              not your fault.
+            </h2>
+            <p className="mt-6 text-[1.1rem] text-white/75 leading-relaxed">
+              It's your systems.
+            </p>
+            <p className="mt-2 text-[1.25rem] text-white font-medium">
+              Let's fix that.
             </p>
             <div className="mt-9 flex justify-center">
               <ButtonLink href={siteConfig.ctaPrimary.href} size="lg">
@@ -276,16 +327,6 @@ export default function Home() {
                 <ArrowRight className="size-4" />
               </ButtonLink>
             </div>
-            <p className="mt-5 text-xs text-subtle">
-              Or{" "}
-              <Link
-                href="/pricing"
-                className="text-foreground hover:text-accent transition-colors underline-offset-4 hover:underline"
-              >
-                see pricing
-              </Link>{" "}
-              first.
-            </p>
           </div>
         </Container>
       </Section>

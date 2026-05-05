@@ -2,10 +2,11 @@ export const siteConfig = {
   name: "Conscience OS",
   url: "https://conscienceos.com",
   description:
-    "We build systems that increase revenue and reduce workload. Premium custom software for operators who have outgrown off-the-shelf tools.",
-  headline: "We build systems that increase revenue and reduce workload.",
+    "We build systems that increase revenue and reduce operational friction. Custom-built software and workflows designed around how your business actually runs.",
+  headline:
+    "We build systems that increase revenue and reduce operational friction.",
   subhead:
-    "Premium custom software for operators who have outgrown off-the-shelf tools. Audit. Build. Measure.",
+    "Custom-built software and workflows designed around how your business actually runs.",
   pillar:
     "We analyze your business, identify inefficiencies, and build custom software systems that increase revenue and eliminate operational friction.",
   ctaPrimary: { label: "Book a System Audit", href: "/book" },
