@@ -1,0 +1,12 @@
+{
+  "name": "internal-ops",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "echo \"internal-ops scaffold not yet built; see m1/internal-ops/FACE-D-BACKEND.md Stage 2\" && exit 0",
+    "build": "echo \"internal-ops scaffold not yet built; see m1/internal-ops/FACE-D-BACKEND.md Stage 2\" && exit 0",
+    "start": "echo \"internal-ops scaffold not yet built\" && exit 0",
+    "lint": "echo \"internal-ops lint placeholder\"",
+    "typecheck": "echo \"internal-ops typecheck placeholder\""
+  }
+}
