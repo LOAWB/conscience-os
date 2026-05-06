@@ -20,12 +20,14 @@ face-e should claim under `project_id=conscience-os-internal-ui` (matching face-
 The original 27-name lock was too thin. Pory called out that face-f will be forced to inline duplicates without these. Add to `@repo/ui` exports:
 
 - Layout / chrome: `PageHeader`, `SectionHeader`, `ActionBar`
-- List surfaces: `SearchInput`, `FilterTabs` (or `SegmentedControl`), `SortSelect`, `Pagination`, `DataList` (preferred over `DataTable` for the "operational command center" feel — denser rows, less chrome)
-- Detail surfaces: `DetailPanel`, `DetailField`, `Tabs`, `Drawer` (or `SidePanel`)
+- List surfaces: `SearchInput`, `FilterTabs`, `SortSelect`, `Pagination`, `DataList` (preferred over `DataTable` for the "operational command center" feel — denser rows, less chrome)
+- Detail surfaces: `DetailPanel`, `DetailField`, `Tabs`, `Drawer`
 - Modal / dialog: `Modal`, `ConfirmDialog`, `DropdownMenu`
 - Form additions: `IconButton`, `CheckboxInput`
 - Data-rendering: `ProgressBar`, `Checklist`, `Timeline`, `NoteComposer`
-- Notifications: `Toast` (or `InlineNotice`)
+- Notifications: `Toast`, `InlineNotice`
+
+**Name-lock (per Pory round-2 cosign on face-f):** the names above are exact `@repo/ui` exports. Earlier "or" alternatives are dropped. Use `FilterTabs` not `SegmentedControl`. Use `Drawer` not `SidePanel`. Both `Toast` and `InlineNotice` ship: `Toast` for transient (timed dismiss) notifications, `InlineNotice` for persistent contextual banners (e.g., the demo-data label in section A4).
 
 Combined with the original 27, the locked publish list is now **50 primitives**. face-e exports them as stubs first (so face-f never sees a missing import during the parallel build window), then fills implementations during Stage 3.
 
@@ -184,7 +186,7 @@ Apply to every user-supplied text field before emission: `business_overview`, `c
 
 ### F10. Server-side auth on every API route
 
-Middleware verifies JWT signature/expiry at the edge but cannot query Postgres for revocation. EVERY API route handler must call `getSession()` (or `requireRole(...)`) from `apps/internal-ops/src/lib/auth.ts` to enforce server-side revocation:
+Middleware verifies JWT signature/expiry at the edge but cannot query Postgres for revocation. EVERY API route handler must call `getSession()` from `apps/internal-ops/src/lib/auth.ts` OR `requireRole(...)` from `apps/internal-ops/src/lib/role-guard.ts` to enforce server-side revocation. `requireRole` is the higher-order wrapper preferred for entity routes:
 
 ```ts
 export const GET = requireRole(["owner", "operator"], async (req, ctx) => {

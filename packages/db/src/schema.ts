@@ -10,6 +10,7 @@ import {
   inet,
   check,
   uniqueIndex,
+  type AnyPgColumn,
 } from "drizzle-orm/pg-core";
 import { sql } from "drizzle-orm";
 
@@ -117,7 +118,10 @@ export const leads = pgTable(
     // New canonical field for follow-up scheduling
     nextFollowUpAt: timestamp("next_follow_up_at", { withTimezone: true }),
     // Set when a lead converts to a client (via Won transition)
-    convertedClientId: uuid("converted_client_id"),
+    convertedClientId: uuid("converted_client_id").references(
+      (): AnyPgColumn => clients.id,
+      { onDelete: "set null" },
+    ),
     createdAt: timestamp("created_at", { withTimezone: true })
       .notNull()
       .defaultNow(),
