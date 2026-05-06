@@ -62,11 +62,19 @@ vercel env add ADMIN_PASSWORD_HASH production    # paste the bcrypt output
 
 ### 4. Apply the migration
 
-Pull the env vars locally so Drizzle can connect:
+Pull the **production** env vars locally so Drizzle migrates against the same DB the deployed app will use:
 
 ```bash
-vercel env pull .env.local
+vercel env pull .env.local --environment=production
 ```
+
+Verify `.env.local` actually contains the Neon `DATABASE_URL` before migrating:
+
+```bash
+grep -q '^DATABASE_URL=' .env.local && echo "DATABASE_URL: present" || echo "DATABASE_URL: MISSING — re-run env pull"
+```
+
+If missing, the env scope was wrong. Re-run with explicit `--environment=production` and confirm the Vercel project link is `conscience-os`.
 
 Run the migration:
 
@@ -84,12 +92,16 @@ vercel deploy --prod --yes
 
 (Vercel triggers an automatic deploy when env vars change, but a manual deploy ensures the new build picks up `DATABASE_URL`.)
 
-### 6. Verify
+### 6. Verify both paths (do not skip step 3)
 
-1. Open `https://conscience-os.vercel.app/app/login`.
-2. Sign in with the email + password you set.
-3. You should land on `/app/leads`. If empty, submit a test intake at `/book` — it'll appear within seconds.
-4. Click a lead to test status changes + add a note.
+An empty dashboard only proves auth works, not DB write-through. Both paths must be tested before declaring the CRM functional.
+
+1. Open `https://conscience-os.vercel.app/app/login` and sign in with the email + password you set. You should land on `/app/leads`.
+2. In another tab, submit a test intake at `/book` (name + email + business + business type + problems).
+3. Refresh `/app/leads`. The test lead should appear within ~5 seconds.
+4. Click into the lead. Change its status, change its tier, add a note. Refresh once more — all three should persist.
+
+If step 3 fails (login works but no lead appears), the DB write path is broken. Most likely cause: `DATABASE_URL` was set to a different env scope than the deployed environment, or the migration ran against a different DB. Re-pull production env vars (`vercel env pull .env.local --environment=production`), confirm the URL host matches the live deploy, and force a fresh `vercel deploy --prod --yes`.
 
 ---
 
@@ -133,3 +145,4 @@ When all five hold, the CRM is functional end-to-end.
 - Contacts / projects / revenue tracking (M4 modules)
 - Notifications (email + in-app on new lead)
 - AI summary integration on intake (deferred to first paying client per zero-spend)
+- Rate limiting + bot mitigation on `POST /api/lead` (currently uncapped; PII writes to Vercel logs). Add when public traffic ramps. (Surfaced by Porygon audit on 2026-05-06.)
