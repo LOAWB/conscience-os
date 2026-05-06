@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { Resend } from "resend";
+import { getDb, isDbConnected } from "@/db";
+import { leads } from "@/db/schema";
 
 const leadSchema = z.object({
   name: z.string().min(1).max(120),
@@ -37,15 +39,35 @@ export async function POST(req: Request) {
 
   console.log("[lead]", summary);
 
+  // Persist to DB if configured
+  if (isDbConnected()) {
+    try {
+      const db = getDb();
+      await db.insert(leads).values({
+        name: lead.name,
+        email: lead.email,
+        business: lead.business,
+        businessType: lead.businessType,
+        problems: lead.problems,
+        tools: lead.tools,
+        outcome: lead.outcome,
+        tier: lead.tier,
+        source: "website",
+      });
+    } catch (err) {
+      console.error("[lead] db insert error", err);
+      // Don't fail the request — email still goes out, intake still captured in logs
+    }
+  }
+
   const apiKey = process.env.RESEND_API_KEY;
   const inbox = process.env.LEAD_INBOX || "hello@conscienceos.com";
   const fromAddress =
-    process.env.LEAD_FROM || "Conscience OS <onboarding@resend.dev>";
+    process.env.LEAD_FROM || "Conscience Os <onboarding@resend.dev>";
 
   if (apiKey) {
     const resend = new Resend(apiKey);
 
-    // Internal copy: full intake to the inbox.
     try {
       await resend.emails.send({
         from: fromAddress,
@@ -58,7 +80,6 @@ export async function POST(req: Request) {
       console.error("[lead] internal email error", err);
     }
 
-    // Confirmation to the submitter: simple, clean, no spam feel.
     try {
       await resend.emails.send({
         from: fromAddress,
@@ -130,7 +151,7 @@ function confirmationEmailText(lead: Lead) {
     "",
     "If you need to add anything or have a quick question, just reply to this email. It goes to the same inbox we read.",
     "",
-    "— Conscience OS",
+    "— Conscience Os",
     "  hello@conscienceos.com",
   ].join("\n");
 }
