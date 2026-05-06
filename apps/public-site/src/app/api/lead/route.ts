@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { Resend } from "resend";
-import { getDb, isDbConnected } from "@/db";
-import { leads } from "@/db/schema";
+import { getDb, isDbConnected, leads } from "@repo/db";
 
 const leadSchema = z.object({
   name: z.string().min(1).max(120),
@@ -46,7 +45,10 @@ export async function POST(req: Request) {
       await db.insert(leads).values({
         name: lead.name,
         email: lead.email,
+        // Legacy column (kept NOT NULL) + new canonical column written together
+        // until a future cleanup migration drops the legacy field.
         business: lead.business,
+        businessName: lead.business,
         businessType: lead.businessType,
         problems: lead.problems,
         tools: lead.tools,

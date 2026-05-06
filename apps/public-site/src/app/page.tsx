@@ -31,11 +31,11 @@ export default function Home() {
                     <ArrowRight className="size-4" />
                   </ButtonLink>
                   <ButtonLink
-                    href="#how-it-works"
+                    href={siteConfig.ctaSecondary.href}
                     variant="secondary"
                     size="lg"
                   >
-                    See how it works
+                    {siteConfig.ctaSecondary.label}
                   </ButtonLink>
                 </div>
               </div>
@@ -74,14 +74,15 @@ export default function Home() {
             The problem
           </p>
           <h2 className="font-semibold tracking-[-0.02em] text-[length:var(--text-display-md)] leading-[1.1]">
-            Most businesses are running on disconnected systems.
+            Three to five tools, a spreadsheet, and a group text holding it all
+            together.
           </h2>
           <ul className="mt-9 space-y-3.5">
             {[
-              "Scheduling in one place",
-              "Inventory in another",
-              "Operations held together manually",
-              "Nothing truly working together",
+              "A dispatcher copy-pasting between systems all day",
+              "Sunday reconciliation because nothing closes the loop automatically",
+              "Reports nobody can run because the data lives in five places",
+              "Staff on different versions of the same number",
             ].map((item) => (
               <li
                 key={item}
@@ -95,7 +96,7 @@ export default function Home() {
             ))}
           </ul>
           <p className="mt-9 text-[1.1rem] text-muted-foreground leading-relaxed">
-            It works — but it creates friction everywhere.
+            It works. It also costs you money every shift.
           </p>
         </Container>
       </Section>
@@ -145,27 +146,31 @@ export default function Home() {
             Origin
           </p>
           <h2 className="font-semibold tracking-[-0.02em] text-[length:var(--text-display-md)] leading-[1.1] text-white">
-            Why Conscience OS exists
+            We run a car wash. That is why this exists.
           </h2>
           <div className="mt-10 space-y-6 text-[1.05rem] text-white/85 leading-relaxed">
             <p>
-              After years operating inside the car wash industry, one thing
-              became clear:
+              Splash Bros. Three locations in the Bay Area. Multi-shift, real
+              throughput, real customers.
             </p>
-            <p className="text-white">
-              Everything existed — just not in a way that worked together.
-            </p>
-            <p>Different tools. Different systems. Constant workarounds.</p>
             <p>
-              So instead of adapting to disconnected software, we built a system
-              around the business itself.
+              When we started, the operation ran on three tools that did not
+              talk to each other and a spreadsheet holding the rest together.
+              Every off-the-shelf option fit our business badly enough that
+              someone was always copy-pasting data between systems to keep the
+              day moving.
             </p>
             <p className="text-white">
-              Centralized. Custom. Built for real operations.
+              So we built the system we wished existed. One platform. Phase by
+              phase. Replaced the stack in ten phases.
             </p>
-            <p>It replaced multiple tools and simplified how everything ran.</p>
+            <p>
+              Splash Bros runs on it now. The same one we hand to operators who
+              hire us.
+            </p>
             <p className="text-white font-medium">
-              That's what Conscience OS is built on.
+              That is the difference. Most dev shops show you logos of clients.
+              We show you the business we run.
             </p>
           </div>
         </Container>
@@ -182,10 +187,10 @@ export default function Home() {
           </h2>
           <div className="mt-10 grid sm:grid-cols-2 gap-y-5 gap-x-10">
             {[
-              "Systems built around your workflow",
-              "Less operational friction",
-              "Clearer team execution",
-              "Everything in one place",
+              "One system replacing three to five disconnected tools",
+              "Real-time visibility into bookings, dispatch, revenue",
+              "Hours back per week on reconciliation and copy-paste work",
+              "A team that adopts it because it fits how they actually work",
             ].map((item) => (
               <div
                 key={item}
@@ -266,18 +271,20 @@ export default function Home() {
       <Section>
         <Container size="narrow">
           <p className="text-xs font-semibold uppercase tracking-wider text-accent mb-4">
-            Real experience
+            Proof
           </p>
           <h2 className="font-semibold tracking-[-0.02em] text-[length:var(--text-display-md)] leading-[1.1]">
-            Real system implementation
+            We built it for ourselves first.
           </h2>
           <div className="mt-9 space-y-5 text-[1.05rem] text-foreground leading-relaxed">
             <p>
-              Built from real operational experience inside a working business.
+              Splash Bros runs on a system we built. Three locations, ten
+              phases, one platform replacing three tools and a spreadsheet.
             </p>
             <p className="text-muted-foreground">
-              Custom systems designed to replace fragmented tools and streamline
-              operations.
+              The system you would hire us to build is the same one we use to
+              run our own operation. The operator and the builder are the same
+              person.
             </p>
           </div>
         </Container>
@@ -294,15 +301,16 @@ export default function Home() {
               System Audit
             </h2>
             <p className="mt-5 text-[1.05rem] text-muted-foreground leading-relaxed">
-              We analyze your business and identify exactly where systems can
-              improve efficiency and revenue.
+              Two to three weeks. Paid engagement, not a free consultation. You
+              walk away with a written audit of your operation and a build
+              proposal scoped to the highest-leverage intervention.
             </p>
 
             <ul className="mt-7 space-y-3.5">
               {[
-                "Breakdown of current setup",
-                "Identified inefficiencies",
-                "Custom system direction",
+                "Operational map of your current systems",
+                "The single highest-leverage build, identified and scoped",
+                "Build proposal you can take elsewhere if it is not us",
               ].map((item) => (
                 <li
                   key={item}

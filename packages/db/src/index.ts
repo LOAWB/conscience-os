@@ -1,5 +1,6 @@
-// @repo/db package boundary.
-// face-d Stage 2 fills the surface: schema (leads/clients/projects/tasks/events/audits/users/sessions/invitations/lead_notes),
-// Drizzle migrations, db client factory, seed/bootstrap.
-// See m1/internal-ops/FACE-D-BACKEND.md.
-export {};
+// @repo/db public surface
+// face-d Stage 2 implementation: schema + client + seed.
+
+export * from "./schema";
+export { getDb, isDbConnected } from "./client";
+export type { DbClient } from "./client";

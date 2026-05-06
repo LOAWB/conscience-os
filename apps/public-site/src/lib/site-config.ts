@@ -2,19 +2,18 @@ export const siteConfig = {
   name: "Conscience OS",
   url: "https://conscienceos.com",
   description:
-    "We build systems that increase revenue and reduce operational friction. Custom-built software and workflows designed around how your business actually runs.",
-  headline:
-    "We build systems that increase revenue and reduce operational friction.",
+    "Custom software that makes your business run better. We map your operation, find what's leaking revenue, and build the system that replaces the duct tape.",
+  headline: "Custom software that makes your business run better.",
   subhead:
-    "Custom-built software and workflows designed around how your business actually runs.",
+    "We map your operation, find what's leaking revenue, and build the system that replaces the duct tape.",
   pillar:
-    "We analyze your business, identify inefficiencies, and build custom software systems that increase revenue and eliminate operational friction.",
+    "We analyze your business, identify the highest-leverage intervention, and build the custom system that replaces the disconnected tools holding your operation together.",
   ctaPrimary: { label: "Book a System Audit", href: "/book" },
-  ctaSecondary: { label: "See the work", href: "/case-study" },
+  ctaSecondary: { label: "See the Splash Bros build", href: "/case-study" },
   trustSignals: [
-    "Built for real businesses",
-    "Custom systems, not templates",
-    "Operator-first identity",
+    "Operator-built",
+    "Splash Bros, live system",
+    "10-phase Build, shipped",
   ],
   contact: { email: "hello@conscienceos.com" },
   nav: [
