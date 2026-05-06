@@ -1,0 +1,14 @@
+# Per-service railway config for conscience-web (public-site).
+# Point the service's Config as Code File path at /apps/public-site/railway.toml
+# in the dashboard if you want service-isolated config (watch paths, deploy
+# hooks). Otherwise the root /railway.toml branches on $RAILWAY_SERVICE_NAME.
+
+[build]
+builder = "RAILPACK"
+buildCommand = "corepack enable && corepack prepare pnpm@10.33.3 --activate && pnpm install --frozen-lockfile && pnpm --filter public-site build"
+watchPatterns = ["apps/public-site/**", "packages/**", "package.json", "pnpm-lock.yaml", "pnpm-workspace.yaml"]
+
+[deploy]
+startCommand = "pnpm --filter public-site start"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3
