@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && cp -r .next/static .next/standalone/.next/static",
-    "start": "node .next/standalone/server.js",
+    "build": "next build && cp -r .next/static .next/standalone/apps/public-site/.next/static",
+    "start": "node .next/standalone/apps/public-site/server.js",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "db:generate": "drizzle-kit generate",
