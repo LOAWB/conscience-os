@@ -41,7 +41,10 @@ export async function readJson<T = unknown>(req: Request): Promise<T> {
   try {
     return (await req.json()) as T;
   } catch {
-    throw new HttpError(400, "Invalid JSON body");
+    // 422 (not 400) — packet acceptance gate says malformed bodies reject with
+    // 422; Zod validation errors and JSON parse errors both surface as 422 so
+    // consumers can treat "request body invalid" as one class.
+    throw new HttpError(422, "Invalid JSON body");
   }
 }
 
