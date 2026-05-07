@@ -1,40 +1,14 @@
-@import "tailwindcss";
+@import "@repo/ui/styles/globals.css";
 
 /*
- * Stage 2 baseline. face-e replaces this with the locked Conscience Os design
- * system imported from @repo/ui (tokens, glass cards, aura, wordmark) once the
- * package is filled.
- *
- * Locked tokens (anchor for face-e extraction):
- *   --bg-base      #06080d    (near-black premium tech)
- *   --text-primary #f4f4f5    (off-white)
- *   --accent       #3b7dff    (electric blue)
+ * internal-ops app-specific extensions on top of the shared @repo/ui globals.
+ * Keep this file lean — anything brand/reset/token-level lives in @repo/ui.
  */
-:root {
-  --bg-base: #06080d;
-  --text-primary: #f4f4f5;
-  --accent: #3b7dff;
-  --border-soft: rgba(255, 255, 255, 0.08);
-  --card-glass: rgba(255, 255, 255, 0.03);
-}
-
-@theme inline {
-  --color-background: var(--bg-base);
-  --color-foreground: var(--text-primary);
-  --color-accent: var(--accent);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
 html,
 body {
-  background: var(--bg-base);
-  color: var(--text-primary);
-  font-family:
-    var(--font-geist-sans),
-    system-ui,
-    -apple-system,
-    sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
 }
 
 * {

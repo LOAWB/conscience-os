@@ -1,15 +1,27 @@
+/*
+ * Conscience Os — locked design system globals.
+ * Owned by @repo/ui. Imported by both apps/public-site and apps/internal-ops.
+ *
+ * Brand tokens (NEVER drift):
+ *   background  #06080d
+ *   foreground  #f4f4f5
+ *   accent      #3b7dff
+ *   font-sans   Geist
+ *   font-mono   Geist Mono
+ *
+ * Scope: brand/reset/token-level + animation utility classes the wordmark and
+ * primitives depend on. App-specific layout CSS lives in each app's globals.
+ */
 @import "tailwindcss";
 
 /*
- * Tailwind v4 source declaration for @repo/ui — public-site components are
- * shims that re-export @repo/ui's primitives, which use class names like
- * `bg-[var(--color-accent)]`. Tailwind needs to scan those source files to
- * include the corresponding utilities in the public-site bundle.
+ * Tell Tailwind v4 to scan @repo/ui source files. Path is resolved relative
+ * to this CSS file. Without @source, classes used inside @repo/ui components
+ * but not appearing anywhere in the consuming app would be tree-shaken away.
  */
-@source "../../../../packages/ui/src/**/*.{ts,tsx}";
+@source "../../src/**/*.{ts,tsx}";
 
 @theme {
-  /* Dark premium tech — black base with electric blue accent */
   --color-background: #06080d;
   --color-foreground: #f4f4f5;
   --color-muted: #0c0f17;
@@ -75,6 +87,7 @@
   }
 }
 
+/* Animations */
 @keyframes fade-in-up {
   from {
     opacity: 0;
@@ -109,57 +122,6 @@
   animation: fade-in-up 0.7s cubic-bezier(0.21, 0.61, 0.35, 1) forwards;
 }
 
-/* Subtle grid background — white-tone on dark */
-.grid-pattern {
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 56px 56px;
-}
-
-/* Hero aura — softer on dark, blue radial behind headline area */
-.aura-hero {
-  position: relative;
-  isolation: isolate;
-}
-.aura-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(
-    ellipse 65% 50% at 30% 35%,
-    rgba(59, 125, 255, 0.16),
-    transparent 65%
-  );
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* Ink section — already dark; aura adds the welcome glow */
-.aura-ink {
-  position: relative;
-  isolation: isolate;
-  background-color: var(--color-ink);
-}
-.aura-ink::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(
-      ellipse 70% 50% at 50% 0%,
-      rgba(59, 125, 255, 0.2),
-      transparent 65%
-    ),
-    radial-gradient(
-      ellipse 50% 35% at 92% 100%,
-      rgba(59, 125, 255, 0.1),
-      transparent 65%
-    );
-  pointer-events: none;
-  z-index: -1;
-}
-
 /* Glass cards — premium translucent surface with subtle white-alpha edge */
 .glass-card {
   background-color: rgba(255, 255, 255, 0.025);
@@ -181,7 +143,7 @@
     0 8px 28px -10px rgba(59, 125, 255, 0.18);
 }
 
-/* Highlighted ink-card — for the focus card on engagement, etc. */
+/* Highlighted ink-card */
 .aura-card-ink {
   background-color: var(--color-ink);
   box-shadow:
@@ -207,7 +169,7 @@
     0 10px 28px -6px rgba(59, 125, 255, 0.65);
 }
 
-/* Blue accent line — for section dividers / subtle hairlines */
+/* Blue accent line */
 .accent-line {
   background: linear-gradient(
     90deg,
@@ -217,7 +179,7 @@
   );
 }
 
-/* Icon box — small rounded container with blue gradient + inner glow */
+/* Icon box */
 .icon-box {
   background: linear-gradient(
     135deg,
@@ -229,6 +191,57 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.12),
     inset 0 0 14px rgba(59, 125, 255, 0.12),
     0 0 20px -6px rgba(59, 125, 255, 0.45);
+}
+
+/* Subtle grid background */
+.grid-pattern {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Hero aura */
+.aura-hero {
+  position: relative;
+  isolation: isolate;
+}
+.aura-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    ellipse 65% 50% at 30% 35%,
+    rgba(59, 125, 255, 0.16),
+    transparent 65%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Ink section aura */
+.aura-ink {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--color-ink);
+}
+.aura-ink::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(
+      ellipse 70% 50% at 50% 0%,
+      rgba(59, 125, 255, 0.2),
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 50% 35% at 92% 100%,
+      rgba(59, 125, 255, 0.1),
+      transparent 65%
+    );
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* Orbit / ring motif animations */
@@ -273,4 +286,8 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: wordmark-sweep 6s ease-in-out infinite;
+}
+
+.text-accent {
+  color: var(--color-accent);
 }

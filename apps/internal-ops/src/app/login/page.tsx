@@ -1,18 +1,27 @@
 /**
- * Stage 2 stub. face-e replaces this with the locked Conscience Os design
- * system + form primitives from @repo/ui. The contract face-e ships against:
+ * Login page — composes face-d's auth contract through @repo/ui primitives.
  *
  *   POST /api/auth/login  body { email, password }
  *     -> 200 { ok: true } + sets conscience_ops_session cookie
  *     -> 401 { error: 'Invalid email or password.' }
  *     -> 429 { error: 'Too many attempts. Try again in 15 minutes.' }
  *
- * On 200, redirect to ?redirect= query param or '/' (dashboard).
+ * Face-e residual-risk note from Pory round 2: do NOT invent a client-only
+ * lockout counter. Consume face-d's locked /api/auth/login behavior.
  */
 "use client";
 
 import { Suspense, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
+import {
+  AuraGlow,
+  Button,
+  FormError,
+  FormField,
+  GlassCard,
+  TextInput,
+  Wordmark,
+} from "@repo/ui";
 
 export default function LoginPage() {
   return (
@@ -62,56 +71,68 @@ function LoginForm() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center px-4">
-      <form
-        onSubmit={onSubmit}
-        className="w-full max-w-sm rounded-xl border border-[var(--border-soft)] bg-[var(--card-glass)] p-8 backdrop-blur-md"
-      >
-        <h1 className="mb-1 text-2xl font-bold tracking-tight">
-          Conscience Os
-        </h1>
-        <p className="mb-6 text-sm opacity-60">Internal operations · sign in</p>
+    <main className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
+      <AuraGlow position="top-right" size={620} intensity={0.16} />
+      <AuraGlow position="bottom-left" size={520} intensity={0.1} />
 
-        <label className="mb-1 block text-xs uppercase tracking-wider opacity-60">
-          Email
-        </label>
-        <input
-          type="email"
-          required
-          autoComplete="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="mb-4 w-full rounded-md border border-[var(--border-soft)] bg-transparent px-3 py-2 text-sm outline-none focus:border-[var(--accent)]"
-        />
+      <div className="relative w-full max-w-[400px]">
+        <div className="flex justify-center mb-6">
+          <Wordmark markSize={22} />
+        </div>
 
-        <label className="mb-1 block text-xs uppercase tracking-wider opacity-60">
-          Password
-        </label>
-        <input
-          type="password"
-          required
-          autoComplete="current-password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="mb-6 w-full rounded-md border border-[var(--border-soft)] bg-transparent px-3 py-2 text-sm outline-none focus:border-[var(--accent)]"
-        />
+        <GlassCard aura className="p-7">
+          <header className="mb-5 text-center">
+            <h1 className="text-[1.1rem] font-semibold tracking-tight text-[var(--color-foreground)]">
+              Sign in to internal ops
+            </h1>
+            <p className="mt-1 text-[0.78rem] text-[var(--color-foreground)]/55">
+              Authorized access only.
+            </p>
+          </header>
 
-        <button
-          type="submit"
-          disabled={submitting}
-          className="w-full rounded-md bg-[var(--accent)] px-4 py-2 text-sm font-medium text-black transition hover:opacity-90 disabled:opacity-40"
-        >
-          {submitting ? "Signing in…" : "Sign in"}
-        </button>
+          <form onSubmit={onSubmit} className="flex flex-col gap-4">
+            <FormField label="Email" htmlFor="email" required>
+              <TextInput
+                id="email"
+                type="email"
+                required
+                autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={submitting}
+              />
+            </FormField>
 
-        {error ? (
-          <p className="mt-4 text-center text-sm text-red-400">{error}</p>
-        ) : null}
+            <FormField label="Password" htmlFor="password" required>
+              <TextInput
+                id="password"
+                type="password"
+                required
+                autoComplete="current-password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                disabled={submitting}
+              />
+            </FormField>
 
-        <p className="mt-8 text-center text-xs opacity-40">
-          Authorized access only.
+            {error ? <FormError>{error}</FormError> : null}
+
+            <Button
+              type="submit"
+              variant="primary"
+              size="md"
+              disabled={submitting}
+              className="mt-1"
+            >
+              {submitting ? "Signing in…" : "Sign in"}
+            </Button>
+          </form>
+        </GlassCard>
+
+        <p className="mt-6 text-center font-mono text-[0.65rem] uppercase tracking-[0.18em] text-[var(--color-foreground)]/35">
+          Conscience Os · Internal Operations
         </p>
-      </form>
+      </div>
     </main>
   );
 }
