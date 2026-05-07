@@ -1,0 +1,14 @@
+# Per-service railway config for internal-ops.
+# Point the service's Config as Code File path at /apps/internal-ops/railway.toml
+# in the dashboard if you want service-isolated config (watch paths, deploy
+# hooks). Otherwise the root /railway.toml branches on $RAILWAY_SERVICE_NAME.
+
+[build]
+builder = "RAILPACK"
+buildCommand = "corepack enable && corepack prepare pnpm@10.33.3 --activate && pnpm install --frozen-lockfile && pnpm --filter internal-ops build"
+watchPatterns = ["apps/internal-ops/**", "packages/**", "package.json", "pnpm-lock.yaml", "pnpm-workspace.yaml"]
+
+[deploy]
+startCommand = "pnpm --filter internal-ops start"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3

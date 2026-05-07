@@ -1,0 +1,293 @@
+/*
+ * Conscience Os — locked design system globals.
+ * Owned by @repo/ui. Imported by both apps/public-site and apps/internal-ops.
+ *
+ * Brand tokens (NEVER drift):
+ *   background  #06080d
+ *   foreground  #f4f4f5
+ *   accent      #3b7dff
+ *   font-sans   Geist
+ *   font-mono   Geist Mono
+ *
+ * Scope: brand/reset/token-level + animation utility classes the wordmark and
+ * primitives depend on. App-specific layout CSS lives in each app's globals.
+ */
+@import "tailwindcss";
+
+/*
+ * Tell Tailwind v4 to scan @repo/ui source files. Path is resolved relative
+ * to this CSS file. Without @source, classes used inside @repo/ui components
+ * but not appearing anywhere in the consuming app would be tree-shaken away.
+ */
+@source "../../src/**/*.{ts,tsx}";
+
+@theme {
+  --color-background: #06080d;
+  --color-foreground: #f4f4f5;
+  --color-muted: #0c0f17;
+  --color-muted-foreground: #94a3b8;
+  --color-subtle: #6b7790;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.18);
+  --color-accent: #3b7dff;
+  --color-accent-hover: #5b8eff;
+  --color-accent-foreground: #ffffff;
+  --color-accent-soft: rgba(59, 125, 255, 0.12);
+  --color-ink: #03050a;
+  --color-ink-soft: #0a0d14;
+  --color-success: #34d399;
+  --color-warn: #fbbf24;
+  --color-error: #f87171;
+
+  --font-sans:
+    var(--font-geist-sans), system-ui, -apple-system, "Segoe UI",
+    "Helvetica Neue", sans-serif;
+  --font-mono:
+    var(--font-geist-mono), "SFMono-Regular", "Menlo", "Monaco", "Consolas",
+    monospace;
+
+  --text-display-xl: clamp(2.75rem, 5.5vw, 4.5rem);
+  --text-display-lg: clamp(2.25rem, 4.5vw, 3.5rem);
+  --text-display-md: clamp(1.875rem, 3.5vw, 2.75rem);
+  --text-display-sm: clamp(1.5rem, 2.5vw, 2rem);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  --shadow-soft:
+    0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 16px -6px rgba(59, 125, 255, 0.1);
+  --shadow-md:
+    0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 10px 24px -6px rgba(59, 125, 255, 0.14);
+  --shadow-lg:
+    0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 32px -8px rgba(59, 125, 255, 0.22);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--color-background);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+  }
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-accent-foreground);
+  }
+}
+
+/* Animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes pulse-ring {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+.fade-in-up {
+  animation: fade-in-up 0.7s cubic-bezier(0.21, 0.61, 0.35, 1) forwards;
+}
+
+/* Glass cards — premium translucent surface with subtle white-alpha edge */
+.glass-card {
+  background-color: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+}
+.glass-card-hover:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+  border-color: rgba(59, 125, 255, 0.3);
+}
+
+/* Aura cards — slightly lifted surface with blue edge glow */
+.aura-card {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 8px 28px -10px rgba(59, 125, 255, 0.18);
+}
+
+/* Highlighted ink-card */
+.aura-card-ink {
+  background-color: var(--color-ink);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 0 1px rgba(59, 125, 255, 0.3),
+    0 0 40px -8px rgba(59, 125, 255, 0.4);
+}
+
+/* Primary button glow */
+.btn-glow {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(59, 125, 255, 0.3),
+    0 6px 20px -4px rgba(59, 125, 255, 0.5);
+  transition:
+    box-shadow 200ms cubic-bezier(0.21, 0.61, 0.35, 1),
+    background-color 150ms;
+}
+.btn-glow:hover {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(59, 125, 255, 0.45),
+    0 10px 28px -6px rgba(59, 125, 255, 0.65);
+}
+
+/* Blue accent line */
+.accent-line {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(59, 125, 255, 0.3) 50%,
+    transparent 100%
+  );
+}
+
+/* Icon box */
+.icon-box {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 125, 255, 0.22) 0%,
+    rgba(59, 125, 255, 0.05) 100%
+  );
+  border: 1px solid rgba(59, 125, 255, 0.32);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 0 14px rgba(59, 125, 255, 0.12),
+    0 0 20px -6px rgba(59, 125, 255, 0.45);
+}
+
+/* Subtle grid background */
+.grid-pattern {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Hero aura */
+.aura-hero {
+  position: relative;
+  isolation: isolate;
+}
+.aura-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    ellipse 65% 50% at 30% 35%,
+    rgba(59, 125, 255, 0.16),
+    transparent 65%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Ink section aura */
+.aura-ink {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--color-ink);
+}
+.aura-ink::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(
+      ellipse 70% 50% at 50% 0%,
+      rgba(59, 125, 255, 0.2),
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 50% 35% at 92% 100%,
+      rgba(59, 125, 255, 0.1),
+      transparent 65%
+    );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Orbit / ring motif animations */
+.orbit-slow {
+  animation: orbit-spin 60s linear infinite;
+  transform-origin: center;
+}
+.orbit-medium {
+  animation: orbit-spin 30s linear infinite;
+  transform-origin: center;
+}
+.pulse-soft {
+  animation: pulse-ring 3.5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Wordmark shimmer — light sweep periodically passes through text */
+@keyframes wordmark-sweep {
+  0%,
+  60% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -150% 0;
+  }
+}
+
+.wordmark-shimmer {
+  background-image: linear-gradient(
+    100deg,
+    #f4f4f5 0%,
+    #f4f4f5 38%,
+    rgba(155, 188, 255, 1) 48%,
+    #ffffff 50%,
+    rgba(155, 188, 255, 1) 52%,
+    #f4f4f5 62%,
+    #f4f4f5 100%
+  );
+  background-size: 220% 100%;
+  background-position: 200% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: wordmark-sweep 6s ease-in-out infinite;
+}
+
+.text-accent {
+  color: var(--color-accent);
+}

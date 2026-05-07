@@ -1,0 +1,16 @@
+@import "@repo/ui/styles/globals.css";
+
+/*
+ * internal-ops app-specific extensions on top of the shared @repo/ui globals.
+ * Keep this file lean — anything brand/reset/token-level lives in @repo/ui.
+ */
+
+html,
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+}
+
+* {
+  box-sizing: border-box;
+}
